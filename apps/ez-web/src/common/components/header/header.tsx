@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { TopNavigation } from '@cloudscape-design/components';
 import styles from './styles.module.scss';
 
-const LazyPreferencesModal = lazy(() => import('../preferences-modal/preferences-modal'));
+const LazyPreferencesModal = lazy(
+  () => import('../preferences-modal/preferences-modal')
+);
 
 const HeaderPortal = ({ children }: { children: ReactNode }) => {
   const dom = document.querySelector('#h');
@@ -14,7 +16,8 @@ const HeaderPortal = ({ children }: { children: ReactNode }) => {
 
 export const Header = () => {
   const navigate = useNavigate();
-  const [isPreferencesModalVisible, setIsPreferencesModalVisible] = useState(false);
+  const [isPreferencesModalVisible, setIsPreferencesModalVisible] =
+    useState(false);
 
   return (
     <>

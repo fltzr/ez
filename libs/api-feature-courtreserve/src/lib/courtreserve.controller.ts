@@ -6,7 +6,7 @@ import type { CourtreserveEventType } from './courtreserve.types';
 
 export const eventsController = async (
   request: Request,
-  response: Response,
+  response: Response
 ) => {
   try {
     const {
@@ -20,8 +20,8 @@ export const eventsController = async (
 
     logger.info(
       `Received request to fetch courtreserve events with query params: ${JSON.stringify(
-        request.query,
-      )}`,
+        request.query
+      )}`
     );
 
     const events = await fetchCourtreseveEvents({

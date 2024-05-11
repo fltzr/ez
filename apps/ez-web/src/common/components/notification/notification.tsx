@@ -12,12 +12,12 @@ export const Notifications = () => {
     (id: string) => {
       removeNotification(id);
     },
-    [removeNotification],
+    [removeNotification]
   );
 
   const autoDismissable = useMemo(
     () => notifications.filter((n) => n.autoDismiss),
-    [notifications],
+    [notifications]
   );
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const Notifications = () => {
     const timers = autoDismissable.map((n) =>
       setTimeout(() => {
         handleDismiss(n.id ?? '');
-      }, 5000),
+      }, 5000)
     );
 
     return () => {
@@ -39,7 +39,7 @@ export const Notifications = () => {
         ...n,
         onDismiss: () => handleDismiss(n.id ?? ''),
       })),
-    [notifications, handleDismiss],
+    [notifications, handleDismiss]
   );
 
   return <Flashbar stackItems items={notificationItems} />;

@@ -3,7 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import type { EventAPIResponse } from '../util/types';
 
 const eventsApi = async () => {
-  const response = await axios.get<EventAPIResponse>('http://localhost:3000/courtreserve/events');
+  const response = await axios.get<EventAPIResponse>(
+    'http://localhost:3000/courtreserve/events'
+  );
 
   return response.data;
 };

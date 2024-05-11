@@ -1,7 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Grid, Box, Button, Link } from '@cloudscape-design/components';
 import type { FieldValues } from 'react-hook-form';
-import { FormSelect, type FormSelectProps } from '../../../common/components/form/form-select/form-select';
+import {
+  FormSelect,
+  type FormSelectProps,
+} from '../../../common/components/form/form-select/form-select';
 
 type CategorySelectProps<T extends FieldValues> = FormSelectProps<T> & {
   onAddNew: () => void;
@@ -26,10 +29,15 @@ export const CategorySelect = <T extends FieldValues>({
       placeholder={placeholder}
       secondaryControl={
         <Grid disableGutters gridDefinition={[{ colspan: 2 }, { colspan: 10 }]}>
-          <Button variant='icon' iconName='refresh' formAction='none' onClick={onRefresh} />
+          <Button
+            variant="icon"
+            iconName="refresh"
+            formAction="none"
+            onClick={onRefresh}
+          />
           <Box margin={{ top: 'xxs' }}>
             <Link
-              variant='secondary'
+              variant="secondary"
               onFollow={(event) => {
                 event.preventDefault();
                 onAddNew();

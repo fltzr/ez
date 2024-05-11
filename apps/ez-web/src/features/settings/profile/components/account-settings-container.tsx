@@ -4,12 +4,12 @@ export const AccountSettingsContainer = () => {
   // AccountSettingsContainer logic here
   return (
     <Container
-      variant='stacked'
+      variant="stacked"
       header={
         <Header
-          variant='h2'
+          variant="h2"
           actions={
-            <Button iconName='external' iconAlign='right'>
+            <Button iconName="external" iconAlign="right">
               Edit
             </Button>
           }

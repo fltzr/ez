@@ -1,4 +1,3 @@
-
 import {
   type FormFieldProps,
   type InputProps,
@@ -6,7 +5,11 @@ import {
   Input,
   Spinner,
 } from '@cloudscape-design/components';
-import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
+import {
+  type ControllerProps,
+  type FieldValues,
+  useController,
+} from 'react-hook-form';
 
 type FormInputProps<T extends FieldValues> = Omit<
   InputProps,
@@ -44,9 +47,14 @@ export const FormInput = <T extends FieldValues>({
       errorText={error?.message}
     >
       {isLoading ? (
-        <Spinner size='normal' />
+        <Spinner size="normal" />
       ) : (
-        <Input {...props} {...field} ref={field.ref} onChange={handleOnChange} />
+        <Input
+          {...props}
+          {...field}
+          ref={field.ref}
+          onChange={handleOnChange}
+        />
       )}
     </FormField>
   );

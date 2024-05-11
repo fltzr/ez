@@ -14,7 +14,7 @@ const useMiddleware = (app: Application) => {
     cors({
       origin: env.ORIGIN,
       credentials: env.CREDENTIALS,
-    }),
+    })
   );
 
   app.use(hpp());

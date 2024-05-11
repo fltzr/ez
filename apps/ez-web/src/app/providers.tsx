@@ -23,7 +23,9 @@ export const Providers = () => {
     };
 
     loadI18nMessages().catch((error) =>
-      console.error(`Error while loading i18n messages: ${JSON.stringify(error, null, 2)}`),
+      console.error(
+        `Error while loading i18n messages: ${JSON.stringify(error, null, 2)}`
+      )
     );
   }, [locale]);
 

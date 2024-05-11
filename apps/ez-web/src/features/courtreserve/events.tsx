@@ -9,7 +9,9 @@ import { useAppLayoutStore } from '../../store/use-app-layout-store';
 import { useNotificationStore } from '../../store/use-notification-store';
 
 const CourtreserveEventsPage = () => {
-  const { setContentLayout } = useAppLayoutStore((s) => ({ setContentLayout: s.setContentLayout }));
+  const { setContentLayout } = useAppLayoutStore((s) => ({
+    setContentLayout: s.setContentLayout,
+  }));
   const { addNotification, removeNotification } = useNotificationStore((s) => ({
     addNotification: s.addNotification,
     removeNotification: s.removeNotification,
@@ -39,7 +41,7 @@ const CourtreserveEventsPage = () => {
       header: 'Failed to fetch events. Try again?',
       action: (
         <Button
-          variant='normal'
+          variant="normal"
           onClick={() => {
             refetch()
               .then(() => {
@@ -68,7 +70,10 @@ const CourtreserveEventsPage = () => {
         return;
       }
 
-      const results = await courtreserveEventSchema.partial().array().safeParseAsync(data.events);
+      const results = await courtreserveEventSchema
+        .partial()
+        .array()
+        .safeParseAsync(data.events);
 
       if (results.error) {
         console.error(results.error);
@@ -83,7 +88,7 @@ const CourtreserveEventsPage = () => {
           start: e.start,
           eventType: e.eventType,
           isFull: e.isFull,
-        })),
+        }))
       );
     };
 
@@ -94,7 +99,7 @@ const CourtreserveEventsPage = () => {
 
   return (
     <Table<CourtreserveEvent>
-      variant='embedded'
+      variant="embedded"
       items={events}
       columnDefinitions={eventTableColumnDefinitions}
       loading={isLoading}

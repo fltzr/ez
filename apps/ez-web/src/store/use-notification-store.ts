@@ -12,7 +12,9 @@ type NotificationActions = {
   clearNotifications: () => void;
 };
 
-export const useNotificationStore = create<NotificationState & NotificationActions>((set) => ({
+export const useNotificationStore = create<
+  NotificationState & NotificationActions
+>((set) => ({
   // Default state
   notifications: [],
 

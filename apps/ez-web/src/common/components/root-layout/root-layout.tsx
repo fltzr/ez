@@ -17,8 +17,8 @@ const RootLayout = () => {
       <AppLayout
         stickyNotifications
         contentType={appLayoutStore.contentLayout}
-        headerSelector='#h'
-        footerSelector='#f'
+        headerSelector="#h"
+        footerSelector="#f"
         navigation={<Navigation />}
         navigationOpen={appLayoutStore.isNavigationOpen}
         tools={appLayoutStore.toolsContent ?? undefined}

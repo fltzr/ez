@@ -10,7 +10,9 @@ declare global {
     [K in keyof T]: T[K] extends object ? Prettify<T[K]> : T[K];
   } & {};
 
-  type NotificationItem = FlashbarProps.MessageDefinition & { autoDismiss?: boolean };
+  type NotificationItem = FlashbarProps.MessageDefinition & {
+    autoDismiss?: boolean;
+  };
 }
 
 declare module '@tanstack/react-query' {

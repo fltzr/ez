@@ -1,6 +1,15 @@
-import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
+import {
+  Box,
+  Button,
+  Header,
+  Modal,
+  SpaceBetween,
+} from '@cloudscape-design/components';
 import { useRef } from 'react';
-import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
+import {
+  type CreateMetaItem,
+  createMetaItemSchema,
+} from '../../schema/meta-item';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { BaseForm } from '../../../../common/components/form/base-form/base-form';
 import { FormInput } from '../../../../common/components/form/form-input/form-input';
@@ -10,7 +19,10 @@ type AddProductTypeModalProps = {
   onClose: () => void;
 };
 
-export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalProps) => {
+export const AddProductTypeModal = ({
+  isVisible,
+  onClose,
+}: AddProductTypeModalProps) => {
   const formRef = useRef<{ reset: () => void }>(null);
 
   const handleLeaveForm = () => {
@@ -23,16 +35,20 @@ export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalP
 
   return (
     <Modal
-      size='large'
+      size="large"
       visible={isVisible}
-      header={<Header variant='h2'>Add a product type</Header>}
+      header={<Header variant="h2">Add a product type</Header>}
       footer={
-        <Box float='right'>
-          <SpaceBetween direction='horizontal' size='xs'>
-            <Button formAction='none' onClick={handleLeaveForm}>
+        <Box float="right">
+          <SpaceBetween direction="horizontal" size="xs">
+            <Button formAction="none" onClick={handleLeaveForm}>
               Cancel
             </Button>
-            <Button variant='primary' form='form_create-product-type' formAction='submit'>
+            <Button
+              variant="primary"
+              form="form_create-product-type"
+              formAction="submit"
+            >
               Add product type
             </Button>
           </SpaceBetween>
@@ -41,7 +57,7 @@ export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalP
       onDismiss={handleLeaveForm}
     >
       <BaseForm
-        formId='form_create-catalog-product-type'
+        formId="form_create-catalog-product-type"
         zodSchema={createMetaItemSchema}
         formRef={formRef}
         onSubmit={(data: CreateMetaItem) => {
@@ -49,8 +65,8 @@ export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalP
           handleLeaveForm();
         }}
       >
-        <SpaceBetween direction='vertical' size='m'>
-          <FormInput name='name' label='Name' />
+        <SpaceBetween direction="vertical" size="m">
+          <FormInput name="name" label="Name" />
           <ControlListEditor />
         </SpaceBetween>
       </BaseForm>

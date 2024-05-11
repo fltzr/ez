@@ -20,7 +20,7 @@ const parseDotNetDate = (date: string): string => {
 };
 
 export const transformApiResponse = (
-  response: CourtreserveEventApiResponse,
+  response: CourtreserveEventApiResponse
 ): CourtreserveEventResponseTransformed => {
   const transformedData = response.Data?.map((event: CourtreserveEvent) => ({
     id: event.UqId.toString(),
@@ -44,7 +44,7 @@ export const transformApiResponse = (
     timeDisplay: event.TimeDisplay,
   })).sort(
     (a, b) =>
-      DateTime.fromISO(b.start).diff(DateTime.fromISO(a.start)).milliseconds,
+      DateTime.fromISO(b.start).diff(DateTime.fromISO(a.start)).milliseconds
   );
 
   console.log(`Returning ${transformedData.length} events`);
@@ -57,30 +57,30 @@ export const transformApiResponse = (
 
 export const filterEventsByEventType = (
   events: CourtreserveEventTransformed[],
-  eventType: CourtreserveEventType,
+  eventType: CourtreserveEventType
 ) => events?.filter((event) => event.eventType === eventType);
 
 export const filterEventsByEventName = (
   events: CourtreserveEventTransformed[],
-  eventName: string,
+  eventName: string
 ) => events?.filter((event) => event.eventName === eventName);
 
 export const filterEventsByEventId = (
   events: CourtreserveEventTransformed[],
-  eventId: string,
+  eventId: string
 ) => events?.filter((event) => event.eventId === eventId);
 
 export const filterEventsBySkillLevel = (
   events: CourtreserveEventTransformed[],
-  skillLevel: string,
+  skillLevel: string
 ) => events?.filter((event) => event.title.includes(skillLevel));
 
 export const filterEventsByTimeDisplay = (
   events: CourtreserveEventTransformed[],
-  timeDisplay: string,
+  timeDisplay: string
 ) => events?.filter((event) => event.timeDisplay === timeDisplay);
 
 export const filterEventsByDayOfWeek = (
   events: CourtreserveEventTransformed[],
-  dayOfWeek: string,
+  dayOfWeek: string
 ) => events?.filter((event) => event.title.includes(dayOfWeek));

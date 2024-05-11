@@ -51,24 +51,33 @@ export const useAppLayoutStore = create<AppLayoutState & AppLayoutActions>()(
       setContentLayout: (contentLayout) => set(() => ({ contentLayout })),
       // Content setters
       setToolsContent: (toolsContent) => set(() => ({ toolsContent })),
-      setSplitPanelContent: (splitPanelContent) => set(() => ({ splitPanelContent })),
+      setSplitPanelContent: (splitPanelContent) =>
+        set(() => ({ splitPanelContent })),
       // Toggle setters
-      setNavigationOpen: (isNavigationOpen) => set(() => ({ isNavigationOpen })),
+      setNavigationOpen: (isNavigationOpen) =>
+        set(() => ({ isNavigationOpen })),
       setToolsOpen: (isToolsOpen) => set(() => ({ isToolsOpen })),
-      setSplitPanelOpen: (isSplitPanelOpen) => set(() => ({ isSplitPanelOpen })),
+      setSplitPanelOpen: (isSplitPanelOpen) =>
+        set(() => ({ isSplitPanelOpen })),
       // UI setters
       setTheme: (theme) => set(() => ({ theme })),
       setDensity: (density) => set(() => ({ density })),
     }),
     {
       name: '__MW::AppLayoutStore',
-      partialize: ({ contentLayout, isToolsOpen, isSplitPanelOpen, theme, density }) => ({
+      partialize: ({
+        contentLayout,
+        isToolsOpen,
+        isSplitPanelOpen,
+        theme,
+        density,
+      }) => ({
         contentLayout,
         isToolsOpen,
         isSplitPanelOpen,
         theme,
         density,
       }),
-    },
-  ),
+    }
+  )
 );

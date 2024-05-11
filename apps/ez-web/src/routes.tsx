@@ -1,4 +1,8 @@
-import { type RouteObject, createBrowserRouter, Navigate } from 'react-router-dom';
+import {
+  type RouteObject,
+  createBrowserRouter,
+  Navigate,
+} from 'react-router-dom';
 
 export const routes: RouteObject[] = [
   {
@@ -28,7 +32,7 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <Navigate replace to='/settings/profile' />,
+            element: <Navigate replace to="/settings/profile" />,
           },
           {
             path: 'profile',
@@ -51,7 +55,7 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <Navigate replace to='/products/create' />,
+            element: <Navigate replace to="/products/create" />,
           },
           {
             path: 'create',

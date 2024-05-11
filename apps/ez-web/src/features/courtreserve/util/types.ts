@@ -33,7 +33,9 @@ export const courtreserveEventSchema = z.object({
   timeDisplay: z.string(),
 });
 
-export type CourtreserveEvent = Partial<z.infer<typeof courtreserveEventSchema>>;
+export type CourtreserveEvent = Partial<
+  z.infer<typeof courtreserveEventSchema>
+>;
 
 export type EventAPIResponse = {
   events: CourtreserveEvent[];

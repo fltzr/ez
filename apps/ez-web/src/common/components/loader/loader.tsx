@@ -8,7 +8,10 @@ export const Loader = () => {
 
   return (
     <div className={styles.container}>
-      <Spinner size='large' variant={theme === Mode.Light ? 'normal' : 'disabled'} />
+      <Spinner
+        size="large"
+        variant={theme === Mode.Light ? 'normal' : 'disabled'}
+      />
     </div>
   );
 };

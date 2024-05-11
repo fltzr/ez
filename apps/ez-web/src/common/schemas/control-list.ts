@@ -6,7 +6,9 @@ export const permittedActions = z.object({
 });
 
 export const controlListSchema = z.object({
-  permittedActions: z.array(permittedActions).min(1, 'At least one action is required.'),
+  permittedActions: z
+    .array(permittedActions)
+    .min(1, 'At least one action is required.'),
   accessType: z.object({
     value: z.enum(['ROLE', 'GROUP', 'USER']),
     label: z.string(),

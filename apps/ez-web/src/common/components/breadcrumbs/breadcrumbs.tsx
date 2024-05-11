@@ -1,4 +1,7 @@
-import { BreadcrumbGroup, type BreadcrumbGroupProps } from '@cloudscape-design/components';
+import {
+  BreadcrumbGroup,
+  type BreadcrumbGroupProps,
+} from '@cloudscape-design/components';
 import { type UIMatch, useMatches, useNavigate } from 'react-router-dom';
 
 type AppUIMatch = UIMatch<unknown, { crumb?: string } | undefined>;

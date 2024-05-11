@@ -4,9 +4,9 @@ export const AlternateContactsContainer = () => {
   // AlternateContactsContainer logic here
   return (
     <Container
-      variant='stacked'
+      variant="stacked"
       header={
-        <Header variant='h2' actions={<Button>Edit</Button>}>
+        <Header variant="h2" actions={<Button>Edit</Button>}>
           Alternate contacts
         </Header>
       }

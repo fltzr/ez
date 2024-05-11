@@ -14,5 +14,5 @@ root &&
       <Suspense fallback={<Loader />}>
         <App />
       </Suspense>
-    </StrictMode>,
+    </StrictMode>
   );

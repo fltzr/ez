@@ -15,5 +15,5 @@ const stream: StreamOptions = {
 export const requestLoggerMiddleware = morgan(
   // Define log format
   ':remote-addr - :remote-user ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
-  { stream },
+  { stream }
 );

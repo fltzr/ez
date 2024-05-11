@@ -1,6 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import { useFormContext } from 'react-hook-form';
-import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
+import {
+  ExpandableSection,
+  HelpPanel,
+  Link,
+  SpaceBetween,
+} from '@cloudscape-design/components';
 import type { Product } from '../../schema/product';
 import { useManufacturerApi } from '../../data-access/manufacturer';
 import { CategorySelect } from '../category-select';
@@ -22,15 +27,20 @@ export const MetaFormPanel = ({
   const { getManufacturers } = useManufacturerApi();
 
   return (
-    <ExpandableSection defaultExpanded variant='container' headerText='Meta'>
-      <SpaceBetween direction='vertical' size='m'>
+    <ExpandableSection defaultExpanded variant="container" headerText="Meta">
+      <SpaceBetween direction="vertical" size="m">
         <CategorySelect
           control={control}
-          name='productType'
-          label='Product type'
-          placeholder='Select a product type'
-          options={getManufacturers.data?.map((m) => ({ label: m.name, value: m.id })) ?? []}
-          loadingText='Loading product types...'
+          name="productType"
+          label="Product type"
+          placeholder="Select a product type"
+          options={
+            getManufacturers.data?.map((m) => ({
+              label: m.name,
+              value: m.id,
+            })) ?? []
+          }
+          loadingText="Loading product types..."
           statusType={
             getManufacturers.isFetching || getManufacturers.isLoading
               ? 'loading'
@@ -40,7 +50,7 @@ export const MetaFormPanel = ({
           }
           info={
             <Link
-              variant='info'
+              variant="info"
               onFollow={() => {
                 setToolsOpen(true);
                 setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
@@ -59,11 +69,16 @@ export const MetaFormPanel = ({
         />
         <CategorySelect
           control={control}
-          name='catalogCategory'
-          label='Catalog category'
-          placeholder='Select a category'
-          options={getManufacturers.data?.map((m) => ({ label: m.name, value: m.id })) ?? []}
-          loadingText='Loading catalog categories...'
+          name="catalogCategory"
+          label="Catalog category"
+          placeholder="Select a category"
+          options={
+            getManufacturers.data?.map((m) => ({
+              label: m.name,
+              value: m.id,
+            })) ?? []
+          }
+          loadingText="Loading catalog categories..."
           statusType={
             getManufacturers.isFetching || getManufacturers.isLoading
               ? 'loading'
@@ -73,7 +88,7 @@ export const MetaFormPanel = ({
           }
           info={
             <Link
-              variant='info'
+              variant="info"
               onFollow={() => {
                 setToolsOpen(true);
                 setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
@@ -92,11 +107,16 @@ export const MetaFormPanel = ({
         />
         <CategorySelect
           control={control}
-          name='manufacturer'
-          label='Manufacturer'
-          placeholder='Select a manufacturer'
-          options={getManufacturers.data?.map((m) => ({ label: m.name, value: m.id })) ?? []}
-          loadingText='Loading manufacturers...'
+          name="manufacturer"
+          label="Manufacturer"
+          placeholder="Select a manufacturer"
+          options={
+            getManufacturers.data?.map((m) => ({
+              label: m.name,
+              value: m.id,
+            })) ?? []
+          }
+          loadingText="Loading manufacturers..."
           statusType={
             getManufacturers.isFetching || getManufacturers.isLoading
               ? 'loading'
@@ -106,7 +126,7 @@ export const MetaFormPanel = ({
           }
           info={
             <Link
-              variant='info'
+              variant="info"
               onFollow={() => {
                 setToolsOpen(true);
                 setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
