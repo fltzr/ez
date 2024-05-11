@@ -25,7 +25,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/apps/ez-web',
+    outDir: '../../dist/ez-web',
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,

@@ -11,12 +11,13 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/ez-api",
+        "outputPath": "dist/ez-api",
         "format": ["cjs"],
         "bundle": false,
         "main": "apps/ez-api/src/main.ts",
         "tsConfig": "apps/ez-api/tsconfig.app.json",
-        "assets": ["apps/ez-api/src/assets"],
+        "deleteOutputPath": true,
+        "minify": true,
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,

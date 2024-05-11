@@ -35,7 +35,7 @@ export const createApplication = async () => {
   useMiddleware(app);
   useRoutes(app);
 
-  logger.info('✅ Application initialized.');
+  logger.info('✅ Application initialized');
 
   return app;
 };
