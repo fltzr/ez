@@ -1,4 +1,4 @@
-import { Request, Response, type NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { isNativeError } from 'util/types';
 import { logger } from '@ez/core';
 import { fetchCourtreseveEvents } from './courtreserve.service';
