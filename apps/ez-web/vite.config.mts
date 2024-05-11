@@ -8,12 +8,12 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/ez-web',
 
   server: {
-    port: 4200,
+    port: 4000,
     host: 'localhost',
   },
 
   preview: {
-    port: 4300,
+    port: 4100,
     host: 'localhost',
   },
 
@@ -29,6 +29,37 @@ export default defineConfig({
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
+    },
+    rollupOptions: {
+      output: {
+        chunkFileNames: ({ name }) => {
+          if (/all.*/.test(name)) {
+            return 'locales/[name].js';
+          }
+
+          return 'chunks/[name]-[hash].js';
+        },
+        entryFileNames: 'entry/[name]-[hash].js',
+        assetFileNames: ({ name }) => {
+          if (!name) {
+            return 'assets/[name]-[hash][extname]';
+          }
+
+          if (name.match(/^all\..*\.js$/)) {
+            return 'locales/[name]-[hash][extname]';
+          }
+
+          if (/\.(gif|jpe?g|png|svg)/.test(name)) {
+            return 'images/[name]-[hash][extname]';
+          }
+
+          if (/\.(css)$/.test(name)) {
+            return 'styles/[name]-[hash][extname]';
+          }
+
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
     },
   },
 

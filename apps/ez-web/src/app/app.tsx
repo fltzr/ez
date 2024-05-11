@@ -1,14 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import { Providers } from './providers';
+import { usePreferences } from '../common/hooks/use-preferences';
 
-import NxWelcome from './nx-welcome';
+export const App: React.FC = () => {
+  usePreferences();
 
-export function App() {
-  return (
-    <div>
-      <NxWelcome title="ez-web" />
-    </div>
-  );
-}
-
-export default App;
+  return <Providers />;
+};

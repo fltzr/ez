@@ -1,7 +1,6 @@
 // morganConfig.ts
 import morgan, { StreamOptions } from 'morgan';
 import { logger } from '../config/logger';
-import { env } from '../config/env';
 
 // Stream configuration for morgan
 const stream: StreamOptions = {
