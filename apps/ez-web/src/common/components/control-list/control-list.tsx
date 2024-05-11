@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import {
-  AttributeEditor,
-  FormField,
-  HelpPanel,
-  Link,
-} from '@cloudscape-design/components';
+import { AttributeEditor, FormField, HelpPanel, Link } from '@cloudscape-design/components';
 import { useController, useFieldArray, useFormContext } from 'react-hook-form';
 import { FormMultiselect } from '../form/form-multiselect/form-multiselect';
 import { FormSelect } from '../form/form-select/form-select';
@@ -42,12 +37,12 @@ export const ControlListEditor = () => {
     <FormField
       stretch
       errorText={error?.message}
-      label="Controls"
-      description="Controls are used to define the access permissions for the resource."
-      constraintText="At least one control must be defined."
+      label='Controls'
+      description='Controls are used to define the access permissions for the resource.'
+      constraintText='At least one control must be defined.'
       info={
         <Link
-          variant="info"
+          variant='info'
           onFollow={() => {
             setToolsOpen(true);
             setToolsContent(<HelpPanel>control-list</HelpPanel>);
@@ -60,7 +55,7 @@ export const ControlListEditor = () => {
       <AttributeEditor
         addButtonText={'Add control'}
         items={fields}
-        empty="No controls added yet."
+        empty='No controls added yet.'
         definition={[
           {
             label: 'Permitted actions',
@@ -68,13 +63,13 @@ export const ControlListEditor = () => {
               <FormMultiselect
                 control={control}
                 name={`controlList.${index}.permittedActions`}
-                placeholder="Select resource actions"
+                placeholder='Select resource actions'
                 options={defaultControlListConfig.permittedActions}
               />
             ),
             info: (
               <Link
-                variant="info"
+                variant='info'
                 onFollow={() => {
                   setToolsOpen(true);
                   setToolsContent(<HelpPanel>permitted actions</HelpPanel>);
@@ -95,7 +90,7 @@ export const ControlListEditor = () => {
             ),
             info: (
               <Link
-                variant="info"
+                variant='info'
                 onFollow={() => {
                   setToolsOpen(true);
                   setToolsContent(<HelpPanel>access type</HelpPanel>);
@@ -108,14 +103,11 @@ export const ControlListEditor = () => {
           {
             label: 'Granted to',
             control: (_, index) => (
-              <FormInput
-                control={control}
-                name={`controlList.${index}.grantedTo`}
-              />
+              <FormInput control={control} name={`controlList.${index}.grantedTo`} />
             ),
             info: (
               <Link
-                variant="info"
+                variant='info'
                 onFollow={() => {
                   setToolsOpen(true);
                   setToolsContent(<HelpPanel>granted to</HelpPanel>);

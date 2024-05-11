@@ -39,7 +39,7 @@ export const TableRow = ({
         <path
           d={`M48 ${separatorDistance.toString()}H187.387`}
           className={styles.separator}
-          strokeLinecap="square"
+          strokeLinecap='square'
         />
       )}
     </g>
@@ -52,11 +52,7 @@ type TableRowsProps = {
   compact?: boolean;
 };
 
-export const TableRows = ({
-  offsetTop,
-  rows,
-  compact = false,
-}: TableRowsProps) => {
+export const TableRows = ({ offsetTop, rows, compact = false }: TableRowsProps) => {
   const distance = compact ? 10 : 13;
 
   return (
@@ -80,19 +76,13 @@ export const TableRows = ({
 
 export const WindowPath = () => (
   <path
-    d="M24 1.00006H211C211.552 1.00006 212 1.44778 212 2.00006V105C212 105.552 211.552 106 211 106H24C23.4477 106 23 105.552 23 105V2.00006C23 1.44778 23.4477 1.00006 24 1.00006Z"
+    d='M24 1.00006H211C211.552 1.00006 212 1.44778 212 2.00006V105C212 105.552 211.552 106 211 106H24C23.4477 106 23 105.552 23 105V2.00006C23 1.44778 23.4477 1.00006 24 1.00006Z'
     className={styles.window}
-    strokeWidth="2"
+    strokeWidth='2'
   />
 );
 export const TopNavigation = () => (
-  <g className="awsui-context-top-navigation">
-    <rect
-      x="24"
-      y="2"
-      width="187"
-      height="6"
-      className={styles['top-navigation']}
-    />
+  <g className='awsui-context-top-navigation'>
+    <rect x='24' y='2' width='187' height='6' className={styles['top-navigation']} />
   </g>
 );

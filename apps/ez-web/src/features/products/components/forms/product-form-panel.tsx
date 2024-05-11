@@ -1,10 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import {
-  ExpandableSection,
-  HelpPanel,
-  Link,
-  SpaceBetween,
-} from '@cloudscape-design/components';
+import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
 import type { Product } from '../../schema/product';
 import { FormInput } from '../../../../common/components/form/form-input/form-input';
 import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
@@ -16,11 +11,11 @@ export const ProductFormPanel = () => {
   return (
     <ExpandableSection
       defaultExpanded
-      variant="container"
-      headerText="Product"
+      variant='container'
+      headerText='Product'
       headerInfo={
         <Link
-          variant="info"
+          variant='info'
           onFollow={() => {
             setToolsOpen(true);
             setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
@@ -30,22 +25,20 @@ export const ProductFormPanel = () => {
         </Link>
       }
     >
-      <SpaceBetween direction="vertical" size="m">
+      <SpaceBetween direction='vertical' size='m'>
         <FormInput
           disableBrowserAutocorrect
           control={control}
-          name="name"
-          label="Name"
-          placeholder="Macbook Pro"
-          description="Enter the name of the product."
+          name='name'
+          label='Name'
+          placeholder='Macbook Pro'
+          description='Enter the name of the product.'
           info={
             <Link
-              variant="info"
+              variant='info'
               onFollow={() => {
                 setToolsOpen(true);
-                setToolsContent(
-                  <HelpPanel>product-form-panel input-name</HelpPanel>
-                );
+                setToolsContent(<HelpPanel>product-form-panel input-name</HelpPanel>);
               }}
             >
               info
@@ -55,20 +48,18 @@ export const ProductFormPanel = () => {
         <FormInput
           disableBrowserAutocorrect
           control={control}
-          name="price"
-          label="Price"
-          placeholder="1000.00"
-          description="Enter the price of the product in USD."
-          type="number"
-          inputMode="decimal"
+          name='price'
+          label='Price'
+          placeholder='1000.00'
+          description='Enter the price of the product in USD.'
+          type='number'
+          inputMode='decimal'
           info={
             <Link
-              variant="info"
+              variant='info'
               onFollow={() => {
                 setToolsOpen(true);
-                setToolsContent(
-                  <HelpPanel>product-form-panel input-price</HelpPanel>
-                );
+                setToolsContent(<HelpPanel>product-form-panel input-price</HelpPanel>);
               }}
             >
               info

@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
-import {
-  applyMode as applyTheme,
-  applyDensity,
-} from '@cloudscape-design/global-styles';
+import { applyMode as applyTheme, applyDensity } from '@cloudscape-design/global-styles';
 import { useAppLayoutStore } from '../../store/use-app-layout-store';
 
 export const usePreferences = () => {

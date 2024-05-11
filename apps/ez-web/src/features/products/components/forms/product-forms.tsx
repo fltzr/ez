@@ -44,7 +44,7 @@ export const ProductForms = ({
 
   return (
     <BaseForm
-      formId="form_create-product"
+      formId='form_create-product'
       formRef={formRef}
       zodSchema={productSchema.transform((data) => ({
         ...data,
@@ -60,18 +60,15 @@ export const ProductForms = ({
       onSubmit={onSubmit}
     >
       <Grid
-        gridDefinition={[
-          { colspan: { default: 12, m: 8 } },
-          { colspan: { default: 12, m: 4 } },
-        ]}
+        gridDefinition={[{ colspan: { default: 12, m: 8 } }, { colspan: { default: 12, m: 4 } }]}
       >
-        <SpaceBetween direction="vertical" size="m">
+        <SpaceBetween direction='vertical' size='m'>
           <Breadcrumbs />
           <Header
-            variant="h1"
+            variant='h1'
             info={
               <Link
-                variant="info"
+                variant='info'
                 onFollow={() => {
                   setToolsContent(<HelpPanel>form_create-product</HelpPanel>);
                   setToolsOpen(true);
@@ -89,10 +86,7 @@ export const ProductForms = ({
             setProductTypeModalOpen={setProductTypeModalOpen}
             setCatalogCategoryModalOpen={setCatalogCategoryModalOpen}
           />
-          <ExpandableSection
-            variant="container"
-            headerText="Access control list"
-          >
+          <ExpandableSection variant='container' headerText='Access control list'>
             <ControlListEditor />
           </ExpandableSection>
         </SpaceBetween>

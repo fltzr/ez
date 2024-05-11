@@ -1,9 +1,5 @@
 import { Button } from '@cloudscape-design/components';
-import {
-  type MutationFunction,
-  type UseMutationOptions,
-  useMutation,
-} from '@tanstack/react-query';
+import { type MutationFunction, type UseMutationOptions, useMutation } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
@@ -78,7 +74,7 @@ export const useMutationWithNotification = <TData, TVariables>({
         dismissible: true,
         action: config?.retryOnFailsure ? (
           <Button
-            iconName="refresh"
+            iconName='refresh'
             onClick={(event) => {
               event.preventDefault();
               removeNotification(notificationId);

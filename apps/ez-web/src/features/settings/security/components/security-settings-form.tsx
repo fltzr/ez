@@ -2,13 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { type SubmitHandler, FormProvider, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import {
-  Box,
-  Button,
-  Form,
-  Header,
-  SpaceBetween,
-} from '@cloudscape-design/components';
+import { Box, Button, Form, Header, SpaceBetween } from '@cloudscape-design/components';
 import { useEffect } from 'react';
 import { FormSelect } from '../../../../common/components/form/form-select/form-select';
 import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
@@ -80,25 +74,22 @@ export const SecuritSettingsForm = () => {
   }, []);
 
   return (
-    <Form
-      variant="embedded"
-      header={<Header variant="h2">Security settings</Header>}
-    >
-      <SpaceBetween direction="vertical" size="xs">
+    <Form variant='embedded' header={<Header variant='h2'>Security settings</Header>}>
+      <SpaceBetween direction='vertical' size='xs'>
         <FormProvider {...methods}>
           <form
-            id="security-settings"
+            id='security-settings'
             onSubmit={(event) => {
               void methods.handleSubmit(handleOnSubmit)(event);
             }}
           >
-            <SpaceBetween size="m" direction="vertical">
+            <SpaceBetween size='m' direction='vertical'>
               <FormSelect
                 name={'tfa'}
-                label="Two-factor authentication"
-                constraintText="Default value is on."
+                label='Two-factor authentication'
+                constraintText='Default value is on.'
                 control={methods.control}
-                placeholder="Choose..."
+                placeholder='Choose...'
                 disabled={updateUserPrefs.isPending}
                 options={[
                   { label: 'on', value: 'on' },
@@ -107,10 +98,10 @@ export const SecuritSettingsForm = () => {
               />
               <FormSelect
                 name={'recoveryPreference'}
-                label="Account recovery preference"
-                constraintText="Default value is email."
+                label='Account recovery preference'
+                constraintText='Default value is email.'
                 control={methods.control}
-                placeholder="Choose..."
+                placeholder='Choose...'
                 disabled={updateUserPrefs.isPending}
                 options={[
                   { label: 'email', value: 'email' },
@@ -122,9 +113,9 @@ export const SecuritSettingsForm = () => {
         </FormProvider>
         <Box>
           <Button
-            variant="primary"
-            form="security-settings"
-            formAction="submit"
+            variant='primary'
+            form='security-settings'
+            formAction='submit'
             loading={updateUserPrefs.isPending}
           >
             Save

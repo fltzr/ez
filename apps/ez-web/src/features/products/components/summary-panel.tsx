@@ -19,25 +19,23 @@ export const SummaryPanel = () => {
 
   return (
     <div style={{ position: 'sticky', top: '52px' }}>
-      <ExpandableSection defaultExpanded variant="stacked" headerText="Summary">
+      <ExpandableSection defaultExpanded variant='stacked' headerText='Summary'>
         <ColumnLayout columns={2}>
-          <KeyValuePair label="Name">{values.name}</KeyValuePair>
-          <KeyValuePair label="Price">
-            {formatPrice(values.price ?? 0)}
-          </KeyValuePair>
+          <KeyValuePair label='Name'>{values.name}</KeyValuePair>
+          <KeyValuePair label='Price'>{formatPrice(values.price ?? 0)}</KeyValuePair>
         </ColumnLayout>
-        <SpaceBetween direction="vertical" size="s">
+        <SpaceBetween direction='vertical' size='s'>
           {/* <KeyValuePair label='Manufacturer'>{values.manufacturer?.label}</KeyValuePair>
           <KeyValuePair label='Category'>{values.catalogCategory?.label}</KeyValuePair>
           <KeyValuePair label='Product type'>{values.productType?.label}</KeyValuePair> */}
           {JSON.stringify(values, null, 2)}
         </SpaceBetween>
       </ExpandableSection>
-      <Container fitHeight variant="stacked">
+      <Container fitHeight variant='stacked'>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button
             wrapText={false}
-            formAction="none"
+            formAction='none'
             onClick={(event) => {
               event.preventDefault();
               navigate(-1);
@@ -45,12 +43,7 @@ export const SummaryPanel = () => {
           >
             Cancel
           </Button>
-          <Button
-            wrapText={false}
-            variant="primary"
-            form="form_create-product"
-            formAction="submit"
-          >
+          <Button wrapText={false} variant='primary' form='form_create-product' formAction='submit'>
             Submit
           </Button>
         </div>

@@ -4,19 +4,9 @@ import { logger } from '@ez/core';
 import { fetchCourtreseveEvents } from './courtreserve.service';
 import type { CourtreserveEventType } from './courtreserve.types';
 
-export const eventsController = async (
-  request: Request,
-  response: Response
-) => {
+export const eventsController = async (request: Request, response: Response) => {
   try {
-    const {
-      eventType,
-      eventName,
-      eventId,
-      skillLevel,
-      timeDisplay,
-      dayOfWeek,
-    } = request.query;
+    const { eventType, eventName, eventId, skillLevel, timeDisplay, dayOfWeek } = request.query;
 
     logger.info(
       `Received request to fetch courtreserve events with query params: ${JSON.stringify(

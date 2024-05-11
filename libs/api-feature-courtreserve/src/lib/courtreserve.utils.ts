@@ -42,10 +42,7 @@ export const transformApiResponse = (
     canSignUp: event.CanSignUp,
     isRegistrationOpen: event.IsRegistrationOpen,
     timeDisplay: event.TimeDisplay,
-  })).sort(
-    (a, b) =>
-      DateTime.fromISO(b.start).diff(DateTime.fromISO(a.start)).milliseconds
-  );
+  })).sort((a, b) => DateTime.fromISO(b.start).diff(DateTime.fromISO(a.start)).milliseconds);
 
   console.log(`Returning ${transformedData.length} events`);
 
@@ -65,10 +62,8 @@ export const filterEventsByEventName = (
   eventName: string
 ) => events?.filter((event) => event.eventName === eventName);
 
-export const filterEventsByEventId = (
-  events: CourtreserveEventTransformed[],
-  eventId: string
-) => events?.filter((event) => event.eventId === eventId);
+export const filterEventsByEventId = (events: CourtreserveEventTransformed[], eventId: string) =>
+  events?.filter((event) => event.eventId === eventId);
 
 export const filterEventsBySkillLevel = (
   events: CourtreserveEventTransformed[],

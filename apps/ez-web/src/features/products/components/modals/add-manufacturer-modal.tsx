@@ -1,17 +1,8 @@
 import { nanoid } from 'nanoid';
-import {
-  Box,
-  Button,
-  Header,
-  Modal,
-  SpaceBetween,
-} from '@cloudscape-design/components';
+import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
 import { useRef, useState } from 'react';
 import { isAxiosError } from 'axios';
-import {
-  type CreateMetaItem,
-  createMetaItemSchema,
-} from '../../schema/meta-item';
+import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 import { useManufacturerApi } from '../../data-access/manufacturer';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { BaseForm } from '../../../../common/components/form/base-form/base-form';
@@ -23,10 +14,7 @@ type AddManufacturerModalProps = {
   onClose: () => void;
 };
 
-export const AddManufacturerModal = ({
-  isVisible,
-  onClose,
-}: AddManufacturerModalProps) => {
+export const AddManufacturerModal = ({ isVisible, onClose }: AddManufacturerModalProps) => {
   const { addNotification } = useNotificationStore();
   const { createManufacturer } = useManufacturerApi();
 
@@ -43,21 +31,21 @@ export const AddManufacturerModal = ({
 
   return (
     <Modal
-      size="large"
+      size='large'
       visible={isVisible}
-      header={<Header variant="h2">Add a manufacturer</Header>}
+      header={<Header variant='h2'>Add a manufacturer</Header>}
       footer={
-        <Box float="right">
-          <SpaceBetween direction="horizontal" size="xs">
-            <Button formAction="none" onClick={handleLeaveForm}>
+        <Box float='right'>
+          <SpaceBetween direction='horizontal' size='xs'>
+            <Button formAction='none' onClick={handleLeaveForm}>
               Cancel
             </Button>
             <Button
-              variant="primary"
-              form="form_create-manufacturer"
-              formAction="submit"
+              variant='primary'
+              form='form_create-manufacturer'
+              formAction='submit'
               loading={createManufacturer.isPending}
-              loadingText="Adding Manufacturer"
+              loadingText='Adding Manufacturer'
             >
               Add Manufacturer
             </Button>
@@ -67,10 +55,10 @@ export const AddManufacturerModal = ({
       onDismiss={handleLeaveForm}
     >
       <BaseForm
-        formId="form_create-manufacturer"
+        formId='form_create-manufacturer'
         zodSchema={createMetaItemSchema}
         formRef={formRef}
-        errorIconAriaLabel="Error icon"
+        errorIconAriaLabel='Error icon'
         errorText={formError}
         onSubmit={async (data: CreateMetaItem) => {
           try {
@@ -92,8 +80,8 @@ export const AddManufacturerModal = ({
           }
         }}
       >
-        <SpaceBetween direction="vertical" size="m">
-          <FormInput name="name" label="Name" />
+        <SpaceBetween direction='vertical' size='m'>
+          <FormInput name='name' label='Name' />
           <ControlListEditor />
         </SpaceBetween>
       </BaseForm>

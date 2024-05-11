@@ -41,7 +41,7 @@ const CourtreserveEventsPage = () => {
       header: 'Failed to fetch events. Try again?',
       action: (
         <Button
-          variant="normal"
+          variant='normal'
           onClick={() => {
             refetch()
               .then(() => {
@@ -70,10 +70,7 @@ const CourtreserveEventsPage = () => {
         return;
       }
 
-      const results = await courtreserveEventSchema
-        .partial()
-        .array()
-        .safeParseAsync(data.events);
+      const results = await courtreserveEventSchema.partial().array().safeParseAsync(data.events);
 
       if (results.error) {
         console.error(results.error);
@@ -99,7 +96,7 @@ const CourtreserveEventsPage = () => {
 
   return (
     <Table<CourtreserveEvent>
-      variant="embedded"
+      variant='embedded'
       items={events}
       columnDefinitions={eventTableColumnDefinitions}
       loading={isLoading}

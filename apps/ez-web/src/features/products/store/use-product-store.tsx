@@ -16,9 +16,7 @@ type ProductStoreActions = {
   addManufacturer: (manufacturer: Manufacturer) => void;
 };
 
-export const useProductStore = create<
-  ProductStoreState & ProductStoreActions
->()(
+export const useProductStore = create<ProductStoreState & ProductStoreActions>()(
   persist(
     (set) => ({
       manufacturers: [],

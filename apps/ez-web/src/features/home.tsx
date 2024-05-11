@@ -19,11 +19,11 @@ const ExampleToolsContent = () => {
   const title = 'Tools content example';
 
   return (
-    <HelpPanel header={<Header variant="h2">{title}</Header>}>
-      <Header variant="h3">{title}</Header>
+    <HelpPanel header={<Header variant='h2'>{title}</Header>}>
+      <Header variant='h3'>{title}</Header>
       <p>
-        This is an example of tools content. It can be anything you want, like a
-        form, a list of links, or a custom component.
+        This is an example of tools content. It can be anything you want, like a form, a list of
+        links, or a custom component.
       </p>
     </HelpPanel>
   );
@@ -48,26 +48,22 @@ const ToggleThemeAndDensityActions = () => {
   }));
 
   return (
-    <SpaceBetween size="m" direction="horizontal">
+    <SpaceBetween size='m' direction='horizontal'>
       <Button
         wrapText
-        variant="normal"
+        variant='normal'
         onClick={() => {
-          appLayoutStore.setTheme(
-            appLayoutStore.theme === Theme.Light ? Theme.Dark : Theme.Light
-          );
+          appLayoutStore.setTheme(appLayoutStore.theme === Theme.Light ? Theme.Dark : Theme.Light);
         }}
       >
         Toggle theme
       </Button>
       <Button
         wrapText
-        variant="normal"
+        variant='normal'
         onClick={() => {
           appLayoutStore.setDensity(
-            appLayoutStore.density === Density.Comfortable
-              ? Density.Compact
-              : Density.Comfortable
+            appLayoutStore.density === Density.Comfortable ? Density.Compact : Density.Comfortable
           );
         }}
       >
@@ -93,7 +89,7 @@ const ToggleToolsAndSplitPanelActions = () => {
     <ColumnLayout columns={2} minColumnWidth={120}>
       <Button
         wrapText
-        variant="normal"
+        variant='normal'
         disabled={!appLayoutStore.toolsContent}
         onClick={() => {
           appLayoutStore.setToolsOpen(!appLayoutStore.isToolsOpen);
@@ -104,7 +100,7 @@ const ToggleToolsAndSplitPanelActions = () => {
 
       <Button
         wrapText
-        variant="normal"
+        variant='normal'
         disabled={!appLayoutStore.splitPanelContent}
         onClick={() => {
           appLayoutStore.setSplitPanelOpen(!appLayoutStore.isSplitPanelOpen);
@@ -115,7 +111,7 @@ const ToggleToolsAndSplitPanelActions = () => {
 
       <Button
         wrapText
-        variant="primary"
+        variant='primary'
         onClick={() => {
           if (appLayoutStore.toolsContent) {
             appLayoutStore.setToolsContent(undefined);
@@ -131,7 +127,7 @@ const ToggleToolsAndSplitPanelActions = () => {
 
       <Button
         wrapText
-        variant="primary"
+        variant='primary'
         onClick={() => {
           if (appLayoutStore.splitPanelContent) {
             appLayoutStore.setSplitPanelContent(undefined);
@@ -148,13 +144,7 @@ const ToggleToolsAndSplitPanelActions = () => {
   );
 };
 
-const types: FlashbarProps.Type[] = [
-  'error',
-  'in-progress',
-  'info',
-  'success',
-  'warning',
-];
+const types: FlashbarProps.Type[] = ['error', 'in-progress', 'info', 'success', 'warning'];
 
 const getRandomType = () => {
   const randomIndex = Math.floor(Math.random() * types.length);
@@ -169,7 +159,7 @@ const NotificationActions = () => {
     <ColumnLayout columns={2}>
       <Button
         wrapText
-        variant="primary"
+        variant='primary'
         onClick={() => {
           const uid = nanoid(10);
           const randomType = getRandomType();
@@ -180,7 +170,7 @@ const NotificationActions = () => {
             header: `notification ${uid}`,
             content: (
               <>
-                This is a <Box variant="code">{randomType}</Box> notification.
+                This is a <Box variant='code'>{randomType}</Box> notification.
               </>
             ),
             dismissible: true,
@@ -194,64 +184,51 @@ const NotificationActions = () => {
 };
 
 const Home = () => {
-  const { theme, density, isToolsOpen, isSplitPanelOpen } = useAppLayoutStore(
-    (s) => ({
-      theme: s.theme,
-      density: s.density,
-      isToolsOpen: s.isToolsOpen,
-      isSplitPanelOpen: s.isSplitPanelOpen,
-    })
-  );
+  const { theme, density, isToolsOpen, isSplitPanelOpen } = useAppLayoutStore((s) => ({
+    theme: s.theme,
+    density: s.density,
+    isToolsOpen: s.isToolsOpen,
+    isSplitPanelOpen: s.isSplitPanelOpen,
+  }));
 
   return (
-    <SpaceBetween size="xxl" direction="vertical">
+    <SpaceBetween size='xxl' direction='vertical'>
       <ColumnLayout columns={2}>
         <Container
           fitHeight
-          header={<Header variant="h2">usePreferences()</Header>}
+          header={<Header variant='h2'>usePreferences()</Header>}
           footer={<ToggleThemeAndDensityActions />}
         >
           <ColumnLayout columns={2}>
             <div>
-              <Box variant="awsui-gen-ai-label">Theme</Box>
-              <Box variant="awsui-value-large">{theme}</Box>
+              <Box variant='awsui-gen-ai-label'>Theme</Box>
+              <Box variant='awsui-value-large'>{theme}</Box>
             </div>
             <div>
-              <Box variant="awsui-gen-ai-label">Density</Box>
-              <Box variant="awsui-value-large">{density}</Box>
+              <Box variant='awsui-gen-ai-label'>Density</Box>
+              <Box variant='awsui-value-large'>{density}</Box>
             </div>
           </ColumnLayout>
         </Container>
         <Container
           fitHeight
-          header={
-            <Header variant="h2">
-              Set tools and split panel state and content
-            </Header>
-          }
+          header={<Header variant='h2'>Set tools and split panel state and content</Header>}
           footer={<ToggleToolsAndSplitPanelActions />}
         >
           <ColumnLayout columns={2}>
             <div>
-              <Box variant="awsui-gen-ai-label">Tools</Box>
-              <Box variant="awsui-value-large">
-                {isToolsOpen ? 'Open' : 'Closed'}
-              </Box>
+              <Box variant='awsui-gen-ai-label'>Tools</Box>
+              <Box variant='awsui-value-large'>{isToolsOpen ? 'Open' : 'Closed'}</Box>
             </div>
             <div>
-              <Box variant="awsui-gen-ai-label">Split panel</Box>
-              <Box variant="awsui-value-large">
-                {isSplitPanelOpen ? 'Open' : 'Closed'}
-              </Box>
+              <Box variant='awsui-gen-ai-label'>Split panel</Box>
+              <Box variant='awsui-value-large'>{isSplitPanelOpen ? 'Open' : 'Closed'}</Box>
             </div>
           </ColumnLayout>
         </Container>
       </ColumnLayout>
       <ColumnLayout columns={2}>
-        <Container
-          fitHeight
-          header={<Header variant="h2">Notification actions</Header>}
-        >
+        <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
           <NotificationActions />
         </Container>
         <div></div>

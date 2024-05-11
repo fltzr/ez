@@ -31,25 +31,23 @@ const PreferencesModal = ({ visible, onDismiss }: PreferencesModalProps) => {
 
   return (
     <Modal
-      size="medium"
+      size='medium'
       visible={visible}
-      header={<Header variant="h2">Theme Settings</Header>}
+      header={<Header variant='h2'>Theme Settings</Header>}
       onDismiss={onDismiss}
     >
       <Box margin={{ bottom: 'l' }}>
-        <SpaceBetween size="m" direction="vertical">
-          <FormField label="Theme">
+        <SpaceBetween size='m' direction='vertical'>
+          <FormField label='Theme'>
             <Select
               options={themeOptions}
-              selectedOption={
-                themeOptions.find((opt) => opt.value === theme) ?? null
-              }
+              selectedOption={themeOptions.find((opt) => opt.value === theme) ?? null}
               onChange={(event) => {
                 setTheme(event.detail.selectedOption.value as Theme);
               }}
             />
           </FormField>
-          <FormField label="Density">
+          <FormField label='Density'>
             <Tiles
               value={density}
               items={[

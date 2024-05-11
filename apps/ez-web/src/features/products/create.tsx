@@ -12,8 +12,7 @@ const CreateProductPage = () => {
 
   const [isManufacturerModalOpen, setIsManufacturerModalOpen] = useState(false);
   const [isProductTypeModalOpen, setIsProductTypeModalOpen] = useState(false);
-  const [isCatalogCategoryModalOpen, setIsCatalogCategoryModalOpen] =
-    useState(false);
+  const [isCatalogCategoryModalOpen, setIsCatalogCategoryModalOpen] = useState(false);
 
   useEffect(() => {
     appLayoutStore.setContentLayout('table');

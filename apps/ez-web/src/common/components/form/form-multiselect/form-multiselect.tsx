@@ -5,11 +5,7 @@ import {
   Multiselect,
   Spinner,
 } from '@cloudscape-design/components';
-import {
-  type ControllerProps,
-  type FieldValues,
-  useController,
-} from 'react-hook-form';
+import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
 type FormMultiselectProps<T extends FieldValues> = Omit<
   MultiselectProps,
@@ -49,7 +45,7 @@ export const FormMultiselect = <T extends FieldValues>({
       errorText={error?.message}
     >
       {isLoading ? (
-        <Spinner size="normal" />
+        <Spinner size='normal' />
       ) : (
         <Multiselect
           {...props}

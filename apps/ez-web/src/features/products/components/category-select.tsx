@@ -29,15 +29,10 @@ export const CategorySelect = <T extends FieldValues>({
       placeholder={placeholder}
       secondaryControl={
         <Grid disableGutters gridDefinition={[{ colspan: 2 }, { colspan: 10 }]}>
-          <Button
-            variant="icon"
-            iconName="refresh"
-            formAction="none"
-            onClick={onRefresh}
-          />
+          <Button variant='icon' iconName='refresh' formAction='none' onClick={onRefresh} />
           <Box margin={{ top: 'xxs' }}>
             <Link
-              variant="secondary"
+              variant='secondary'
               onFollow={(event) => {
                 event.preventDefault();
                 onAddNew();

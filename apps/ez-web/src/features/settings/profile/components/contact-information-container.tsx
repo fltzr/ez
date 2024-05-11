@@ -44,23 +44,21 @@ export const ContactInformationContainer = () => {
 
   return (
     <Container
-      variant="stacked"
+      variant='stacked'
       header={
         <Header
-          variant="h2"
-          actions={
-            isEditing ? undefined : <Button onClick={handleEdit}>Edit</Button>
-          }
+          variant='h2'
+          actions={isEditing ? undefined : <Button onClick={handleEdit}>Edit</Button>}
         >
           Contact information
         </Header>
       }
       footer={
         isEditing ? (
-          <Box float="right">
-            <SpaceBetween direction="horizontal" size="s">
+          <Box float='right'>
+            <SpaceBetween direction='horizontal' size='s'>
               <Button onClick={handleCancel}>Cancel</Button>
-              <Button variant="primary" onClick={handleSave}>
+              <Button variant='primary' onClick={handleSave}>
                 Save
               </Button>
             </SpaceBetween>
@@ -68,51 +66,47 @@ export const ContactInformationContainer = () => {
         ) : undefined
       }
     >
-      <ColumnLayout borders="vertical" columns={3}>
+      <ColumnLayout borders='vertical' columns={3}>
         {isEditing ? (
           <>
-            <Box variant="div">
-              <FormInput control={control} name="fullName" label="Full name" />
+            <Box variant='div'>
+              <FormInput control={control} name='fullName' label='Full name' />
             </Box>
-            <Box variant="div">
-              <FormInput
-                control={control}
-                name="companyName"
-                label="Company name"
-              />
+            <Box variant='div'>
+              <FormInput control={control} name='companyName' label='Company name' />
             </Box>
-            <Box variant="div">
-              <FormInput control={control} name="companyName" label="" />
+            <Box variant='div'>
+              <FormInput control={control} name='companyName' label='' />
             </Box>
           </>
         ) : (
           <>
-            <Box variant="div">
-              <Box fontSize="body-m" color="text-status-inactive">
+            <Box variant='div'>
+              <Box fontSize='body-m' color='text-status-inactive'>
                 Full name
               </Box>
               <Box>{form.fullName}</Box>
             </Box>
-            <Box variant="div">
-              <Box fontSize="body-m" color="text-status-inactive">
+            <Box variant='div'>
+              <Box fontSize='body-m' color='text-status-inactive'>
                 Company name
               </Box>
               <Box>{form.companyName}</Box>
             </Box>
-            <Box variant="div">
-              <Box fontSize="body-m" color="text-status-inactive">
+            <Box variant='div'>
+              <Box fontSize='body-m' color='text-status-inactive'>
                 Address
               </Box>
               <Box>{form.address}</Box>
             </Box>
-            <Box variant="div">
-              <Box fontSize="body-m" color="text-status-inactive">
+            <Box variant='div'>
+              <Box fontSize='body-m' color='text-status-inactive'>
                 Phone number
               </Box>
               <Box>{form.phoneNumber}</Box>
             </Box>
-            <Box variant="div">
-              <Box fontSize="body-m" color="text-status-inactive">
+            <Box variant='div'>
+              <Box fontSize='body-m' color='text-status-inactive'>
                 Website URL
               </Box>
               <Box>{form.websiteUrl}</Box>
