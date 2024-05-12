@@ -1,5 +1,3 @@
-/* eslint-disable no-void */
-/* eslint-disable react/jsx-props-no-spreading */
 import { type SubmitHandler, FormProvider, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Box, Button, Form, Header, SpaceBetween } from '@cloudscape-design/components';
@@ -70,7 +68,6 @@ export const SecuritSettingsForm = () => {
     appLayoutStore.setContentLayout('form');
 
     return () => appLayoutStore.setContentLayout('default');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

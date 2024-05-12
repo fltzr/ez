@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { Grid, Box, Button, Link } from '@cloudscape-design/components';
 import type { FieldValues } from 'react-hook-form';
 import {

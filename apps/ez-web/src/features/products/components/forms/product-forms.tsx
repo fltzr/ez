@@ -39,7 +39,6 @@ export const ProductForms = ({
     return () => {
       setToolsContent(null);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
