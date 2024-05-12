@@ -9,7 +9,7 @@ import { routes } from './routes';
 import morgan from 'morgan';
 
 const useMiddleware = (app: Application) => {
-  app.use(morgan('dev', { stream }));
+  app.use(morgan(env.LOG_FORMAT, { stream: { write: (message) => logger.info(message.trim()) } }));
   app.use(
     cors({
       origin: env.ORIGIN,
