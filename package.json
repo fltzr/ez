@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build:api": "nx run ez-api:build:production && node ./scripts/post-build.js",
     "build:web": "nx run ez-web:build:production && node ./scripts/post-build.js",
     "start": "nx run --target"
