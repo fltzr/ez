@@ -5,7 +5,7 @@
     "source.fixAll": "always"
   },
 
-  // "eslint.experimental.useFlatConfig": true,
+  "eslint.experimental.useFlatConfig": true,
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.validate": ["typescript", "typescriptreact", "javascript"]
 }
