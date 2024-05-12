@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:api": "nx run ez-api:build:production && node ./scripts/post-build.js",
+    "build:web": "nx run ez-web:build:production && node ./scripts/post-build.js",
+    "start": "nx run --target"
+  },
   "dependencies": {
     "@cloudscape-design/collection-hooks": "^1.0.45",
     "@cloudscape-design/components": "^3.0.628",

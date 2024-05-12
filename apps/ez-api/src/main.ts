@@ -3,6 +3,11 @@ import { createApplication } from './app';
 
 const startServer = async () => {
   try {
+    logger.info(
+      `🚀 Initializing application for [${
+        env.isProd ? 'PRODUCTION' : env.isDev ? 'DEVELOPMENT' : 'TEST'
+      }]`
+    );
     const app = await createApplication();
 
     app.listen(env.PORT, () => {

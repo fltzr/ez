@@ -17,7 +17,6 @@
         "main": "apps/ez-api/src/main.ts",
         "tsConfig": "apps/ez-api/tsconfig.app.json",
         "deleteOutputPath": true,
-        "minify": true,
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
