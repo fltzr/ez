@@ -1,5 +1,5 @@
 import express, { Application, json, urlencoded } from 'express';
-import { env, logger, stream } from '@ez/core';
+import { env, logger } from '@ez/core';
 import cors from 'cors';
 import hpp from 'hpp';
 import helmet from 'helmet';
