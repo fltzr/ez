@@ -8,7 +8,7 @@ import {
 } from '@cloudscape-design/components';
 import { useNavigate } from 'react-router-dom';
 import type { Product } from '../schema/product';
-import { KeyValuePair } from '../../../common/components/key-value-pair/key-value-pair';
+import { KeyValuePair } from '@ez/web-ui';
 
 const formatPrice = (price: number): string => (price ? `$${price}` : 'N/A');
 
