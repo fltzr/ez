@@ -1,4 +1,9 @@
+import type { FlashbarProps } from '@cloudscape-design/components';
 import { create } from 'zustand';
+
+type NotificationItem = FlashbarProps.MessageDefinition & {
+  autoDismiss?: boolean;
+};
 
 type NotificationState = {
   // Notification states

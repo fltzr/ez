@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useNotificationStore } from '../../store/use-notification-store';
+import { useNotificationStore } from '@ez/web-state-management';
 
 export const useClearNotifications = () => {
   const location = useLocation();
@@ -8,6 +8,5 @@ export const useClearNotifications = () => {
 
   useEffect(() => {
     clearNotifications();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 };

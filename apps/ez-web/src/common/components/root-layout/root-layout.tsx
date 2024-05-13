@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { AppLayout } from '@cloudscape-design/components';
-import { useAppLayoutStore } from '../../../store/use-app-layout-store';
+import { useAppLayoutStore } from '@ez/web-state-management';
 import { Navigation } from '@ez/web-ui';
 import { Notifications } from '../notification/notification';
 import { Header } from '../header/header';

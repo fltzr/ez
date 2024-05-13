@@ -11,9 +11,8 @@ import {
   SplitPanel,
 } from '@cloudscape-design/components';
 import { Mode as Theme, Density } from '@cloudscape-design/global-styles';
-import { useAppLayoutStore } from '../store/use-app-layout-store';
-import { Breadcrumbs } from '../common/components/breadcrumbs/breadcrumbs';
-import { useNotificationStore } from '../store/use-notification-store';
+import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
+import { Breadcrumbs } from '@ez/web-ui';
 
 const ExampleToolsContent = () => {
   const title = 'Tools content example';

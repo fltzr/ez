@@ -6,7 +6,7 @@ import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-ite
 import { useManufacturerApi } from '../../data-access/manufacturer';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { BaseForm, FormInput } from '@ez/web-ui';
-import { useNotificationStore } from '../../../../store/use-notification-store';
+import { useNotificationStore } from '@ez/web-state-management';
 
 type AddManufacturerModalProps = {
   isVisible: boolean;

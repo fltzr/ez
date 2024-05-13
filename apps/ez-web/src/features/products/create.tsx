@@ -4,7 +4,7 @@ import { ProductForms } from './components/forms/product-forms';
 import { AddManufacturerModal } from './components/modals/add-manufacturer-modal';
 import { AddCatalogCategoryModal } from './components/modals/add-catalog-category-modal';
 import { AddProductTypeModal } from './components/modals/add-product-type-modal';
-import { useAppLayoutStore } from '../../store/use-app-layout-store';
+import { useAppLayoutStore } from '@ez/web-state-management';
 
 const CreateProductPage = () => {
   const formRef = useRef<{ reset: () => void }>(null);

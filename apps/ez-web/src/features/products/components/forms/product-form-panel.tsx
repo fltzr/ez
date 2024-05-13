@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form';
 import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
 import type { Product } from '../../schema/product';
 import { FormInput } from '@ez/web-ui';
-import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
+import { useAppLayoutStore } from '@ez/web-state-management';
 
 export const ProductFormPanel = () => {
   const { setToolsOpen, setToolsContent } = useAppLayoutStore();

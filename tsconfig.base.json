@@ -17,6 +17,7 @@
     "paths": {
       "@ez/core": ["libs/api-core/src/index.ts"],
       "@ez/courtreserve": ["libs/api-feature-courtreserve/src/index.ts"],
+      "@ez/web-state-management": ["libs/web-state-management/src/index.ts"],
       "@ez/web-ui": ["libs/web-ui/src/index.ts"]
     }
   },
