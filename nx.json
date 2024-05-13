@@ -32,6 +32,7 @@
   "generators": {
     "@nx/react": {
       "application": {
+        "babel": true,
         "style": "scss",
         "linter": "eslint",
         "bundler": "vite"
@@ -41,7 +42,8 @@
       },
       "library": {
         "style": "scss",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "vitest"
       }
     }
   },

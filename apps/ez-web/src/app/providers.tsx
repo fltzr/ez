@@ -7,7 +7,7 @@ import {
   importMessages,
 } from '@cloudscape-design/components/i18n';
 import { router } from '../routes';
-import { Loader } from '../common/components/loader/loader';
+import { Loader } from '@ez/web-ui';
 
 const queryClient = new QueryClient();
 

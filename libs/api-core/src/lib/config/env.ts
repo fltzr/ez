@@ -17,9 +17,15 @@ export const env = cleanEnv(process.env, {
     devDefault: 'development',
   }),
   PORT: port({ devDefault: 3000 }),
-  SESSION_SECRET: str({ default: '' }),
-  LOG_FORMAT: str({ choices: ['combined', 'dev', 'simple'], default: 'dev' }),
-  LOG_DIR: str({ devDefault: resolve(cwd(), 'logs') }),
+
   ORIGIN: url({ devDefault: 'http://localhost:4000' }),
+  SESSION_SECRET: str({ default: '' }),
   CREDENTIALS: bool({ default: true }),
+
+  LOG_FORMAT: str({
+    choices: ['combined', 'dev', 'simple'],
+    default: 'combined',
+    devDefault: 'dev',
+  }),
+  LOG_DIR: str({ devDefault: 'logs' }),
 });

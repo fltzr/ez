@@ -1,11 +1,9 @@
-/* eslint-disable no-void */
-/* eslint-disable react/jsx-props-no-spreading */
 import { type SubmitHandler, FormProvider, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Box, Button, Form, Header, SpaceBetween } from '@cloudscape-design/components';
 import { useEffect } from 'react';
-import { FormSelect } from '../../../../common/components/form/form-select/form-select';
-import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
+import { FormSelect } from '@ez/web-ui';
+import { useAppLayoutStore } from '@ez/web-state-management';
 
 //https://chat.openai.com/share/283d3941-15b3-4ec2-8f9c-4cea49a8a9d6
 
@@ -70,7 +68,6 @@ export const SecuritSettingsForm = () => {
     appLayoutStore.setContentLayout('form');
 
     return () => appLayoutStore.setContentLayout('default');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

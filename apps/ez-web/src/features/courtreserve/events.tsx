@@ -5,8 +5,7 @@ import { isAxiosError } from 'axios';
 import { useCourtreserveEventsApi } from './data-access/events-api';
 import { type CourtreserveEvent, courtreserveEventSchema } from './util/types';
 import { eventTableColumnDefinitions } from './util/config';
-import { useAppLayoutStore } from '../../store/use-app-layout-store';
-import { useNotificationStore } from '../../store/use-notification-store';
+import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 
 const CourtreserveEventsPage = () => {
   const { setContentLayout } = useAppLayoutStore((s) => ({
@@ -25,7 +24,6 @@ const CourtreserveEventsPage = () => {
     return () => {
       setContentLayout('default');
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

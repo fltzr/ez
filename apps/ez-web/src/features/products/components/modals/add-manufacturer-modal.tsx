@@ -5,9 +5,8 @@ import { isAxiosError } from 'axios';
 import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 import { useManufacturerApi } from '../../data-access/manufacturer';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
-import { BaseForm } from '../../../../common/components/form/base-form/base-form';
-import { FormInput } from '../../../../common/components/form/form-input/form-input';
-import { useNotificationStore } from '../../../../store/use-notification-store';
+import { BaseForm, FormInput } from '@ez/web-ui';
+import { useNotificationStore } from '@ez/web-state-management';
 
 type AddManufacturerModalProps = {
   isVisible: boolean;

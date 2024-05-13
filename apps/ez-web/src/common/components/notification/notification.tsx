@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { Flashbar } from '@cloudscape-design/components';
-import { useNotificationStore } from '../../../store/use-notification-store';
+import { useNotificationStore } from '@ez/web-state-management';
 
 export const Notifications = () => {
   const { notifications, removeNotification } = useNotificationStore((s) => ({

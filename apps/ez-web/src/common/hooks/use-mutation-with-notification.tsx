@@ -3,7 +3,7 @@ import { type MutationFunction, type UseMutationOptions, useMutation } from '@ta
 import type { AxiosError } from 'axios';
 import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
-import { useNotificationStore } from '../../store/use-notification-store';
+import { useNotificationStore } from '@ez/web-state-management';
 
 type MutationContext = {
   inProgressNotificationId: string;

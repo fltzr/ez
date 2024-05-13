@@ -1,10 +1,9 @@
-/* eslint-disable no-nested-ternary */
 import { useFormContext } from 'react-hook-form';
 import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
 import type { Product } from '../../schema/product';
 import { useManufacturerApi } from '../../data-access/manufacturer';
+import { useAppLayoutStore } from '@ez/web-state-management';
 import { CategorySelect } from '../category-select';
-import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
 
 type MetaFormPanelProps = {
   setManufacturerModalOpen: (state: boolean) => void;

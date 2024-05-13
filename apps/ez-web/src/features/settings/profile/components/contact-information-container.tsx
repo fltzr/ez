@@ -8,7 +8,7 @@ import {
 } from '@cloudscape-design/components';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FormInput } from '../../../../common/components/form/form-input/form-input';
+import { FormInput } from '@ez/web-ui';
 
 export const ContactInformationContainer = () => {
   const { control } = useForm();

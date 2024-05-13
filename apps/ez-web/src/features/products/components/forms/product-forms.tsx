@@ -7,14 +7,13 @@ import {
   Link,
   SpaceBetween,
 } from '@cloudscape-design/components';
+import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { type Product, productSchema } from '../../schema/product';
 import { SummaryPanel } from '../summary-panel';
 import { ProductFormPanel } from './product-form-panel';
 import { MetaFormPanel } from './meta-form-panel';
-import { BaseForm } from '../../../../common/components/form/base-form/base-form';
-import { Breadcrumbs } from '../../../../common/components/breadcrumbs/breadcrumbs';
-import { ControlListEditor } from '../../../../common/components/control-list/control-list';
-import { useAppLayoutStore } from '../../../../store/use-app-layout-store';
+import { Breadcrumbs, BaseForm } from '@ez/web-ui';
+import { useAppLayoutStore } from '@ez/web-state-management';
 
 type ProductFormProps = {
   formRef: Ref<{ reset: () => void }>;
@@ -39,7 +38,6 @@ export const ProductForms = ({
     return () => {
       setToolsContent(null);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

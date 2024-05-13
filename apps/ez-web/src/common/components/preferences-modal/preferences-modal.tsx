@@ -8,7 +8,7 @@ import Tiles from '@cloudscape-design/components/tiles';
 import { Density, Mode as Theme } from '@cloudscape-design/global-styles';
 import comfortableDensity from './images/comfortable-density';
 import compactDensity from './images/compact-density';
-import { useAppLayoutStore } from '../../../store/use-app-layout-store';
+import { useAppLayoutStore } from '@ez/web-state-management';
 
 const themeOptions: SelectProps.Option[] = [
   { value: Theme.Light, label: 'Light' },
