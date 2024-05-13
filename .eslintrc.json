@@ -13,6 +13,30 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "scope:web",
+                "onlyDependOnLibsWithTags": ["scope:web"]
+              },
+              {
+                "sourceTag": "scope:api",
+                "onlyDependOnLibsWithTags": ["scope:api"]
+              },
+              {
+                "allSourceTags": ["scope:web", "type:app"],
+                "onlyDependOnLibsWithTags": ["scope:web", "type:ui", "type:state"]
+              },
+              {
+                "allSourceTags": ["scope:web", "type:ui"],
+                "onlyDependOnLibsWithTags": ["scope:web", "type:ui", "type:util"]
+              },
+              {
+                "allSourceTags": ["scope:web", "type:state"],
+                "onlyDependOnLibsWithTags": ["scope:web", "type:util"]
+              },
+              {
+                "allSourceTags": ["scope:api", "type:app"],
+                "onlyDependOnLibsWithTags": ["scope:api", "type:core"]
+              },
+              {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
               }
