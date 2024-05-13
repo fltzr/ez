@@ -1,35 +1,37 @@
+import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 import {
   type FormFieldProps,
-  type InputProps,
+  type MultiselectProps,
   FormField,
-  Input,
+  Multiselect,
   Spinner,
 } from '@cloudscape-design/components';
-import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
-type FormInputProps<T extends FieldValues> = Omit<
-  InputProps,
-  'name' | 'value' | 'options' | 'inputedOption'
+type FormMultiselectProps<T extends FieldValues> = Omit<
+  MultiselectProps,
+  'name' | 'value' | 'options' | 'selectedOptions'
 > &
   Omit<FormFieldProps, 'errorText'> &
   Pick<ControllerProps<T>, 'control' | 'name' | 'rules'> & {
     isLoading?: boolean;
+    options: MultiselectProps.Option[];
   };
 
-export const FormInput = <T extends FieldValues>({
+export const FormMultiselect = <T extends FieldValues>({
   name,
   control,
   rules,
   isLoading,
+  options,
   ...props
-}: FormInputProps<T>) => {
+}: FormMultiselectProps<T>) => {
   const {
     field,
     fieldState: { error },
   } = useController<T>({ name, control, rules });
 
-  const handleOnChange: InputProps['onChange'] = (event) => {
-    field.onChange(event.detail.value);
+  const handleOnChange: MultiselectProps['onChange'] = (event) => {
+    field.onChange(event.detail.selectedOptions);
   };
 
   return (
@@ -45,7 +47,13 @@ export const FormInput = <T extends FieldValues>({
       {isLoading ? (
         <Spinner size='normal' />
       ) : (
-        <Input {...props} {...field} ref={field.ref} onChange={handleOnChange} />
+        <Multiselect
+          {...props}
+          ref={field.ref}
+          options={options}
+          selectedOptions={field.value}
+          onChange={handleOnChange}
+        />
       )}
     </FormField>
   );

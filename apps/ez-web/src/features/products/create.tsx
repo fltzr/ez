@@ -22,7 +22,6 @@ const CreateProductPage = () => {
       appLayoutStore.setContentLayout('default');
       appLayoutStore.setNavigationOpen(true);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = (data: Product) => {

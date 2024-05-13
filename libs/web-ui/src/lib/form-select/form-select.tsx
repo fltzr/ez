@@ -1,10 +1,10 @@
+import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 import {
   type FormFieldProps,
   type SelectProps,
   FormField,
   Select,
 } from '@cloudscape-design/components';
-import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
 export type FormSelectProps<T extends FieldValues> = Omit<
   SelectProps,

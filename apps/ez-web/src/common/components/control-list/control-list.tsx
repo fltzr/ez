@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { AttributeEditor, FormField, HelpPanel, Link } from '@cloudscape-design/components';
 import { useController, useFieldArray, useFormContext } from 'react-hook-form';
-import { FormMultiselect } from '../form/form-multiselect/form-multiselect';
-import { FormSelect } from '../form/form-select/form-select';
-import { FormInput } from '../form/form-input/form-input';
 import { useAppLayoutStore } from '../../../store/use-app-layout-store';
+export { FormInput } from '@ez/web-ui';
+export { FormSelect } from '@ez/web-ui';
+import { FormInput, FormMultiselect, FormSelect } from '@ez/web-ui';
 
 const defaultControlListConfig = {
   permittedActions: [

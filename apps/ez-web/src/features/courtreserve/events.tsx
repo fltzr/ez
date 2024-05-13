@@ -25,7 +25,6 @@ const CourtreserveEventsPage = () => {
     return () => {
       setContentLayout('default');
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

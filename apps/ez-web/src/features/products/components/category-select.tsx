@@ -1,9 +1,6 @@
 import { Grid, Box, Button, Link } from '@cloudscape-design/components';
 import type { FieldValues } from 'react-hook-form';
-import {
-  FormSelect,
-  type FormSelectProps,
-} from '../../../common/components/form/form-select/form-select';
+import { FormSelect, type FormSelectProps } from '@ez/web-ui';
 
 type CategorySelectProps<T extends FieldValues> = FormSelectProps<T> & {
   onAddNew: () => void;
