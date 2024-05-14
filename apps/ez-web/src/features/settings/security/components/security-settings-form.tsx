@@ -68,6 +68,7 @@ export const SecuritSettingsForm = () => {
     appLayoutStore.setContentLayout('form');
 
     return () => appLayoutStore.setContentLayout('default');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -8,5 +8,6 @@ export const useClearNotifications = () => {
 
   useEffect(() => {
     clearNotifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 };

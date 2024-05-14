@@ -38,9 +38,7 @@ export const BaseForm = <TFormValues extends FieldValues>({
           event.preventDefault();
           event.stopPropagation();
 
-          void methods.handleSubmit(onSubmit, (errors) => {
-            console.error(`ERROR: ${JSON.stringify(errors, null, 2)}`);
-          })(event);
+          void methods.handleSubmit(onSubmit)(event);
         }}
       >
         <Form {...formProps}>{children}</Form>
