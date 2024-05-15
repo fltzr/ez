@@ -2,10 +2,10 @@
   "name": "@ez/source",
   "version": "0.0.0",
   "private": true,
-  "license": "MIT",
+  "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "clean": "rimraf .nx dist node_modules",
+    "clean": "rimraf .nx dist tmp node_modules",
     "build:api": "nx run ez-api:build:production && node ./scripts/post-build.js",
     "build:web": "nx run ez-web:build:production && node ./scripts/post-build.js",
     "start": "nx run --target"
