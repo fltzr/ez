@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { z } from 'zod';
 import { useFormContext } from 'react-hook-form';
 import { BaseForm } from './base-form';
@@ -81,9 +81,8 @@ describe('BaseForm', () => {
 
     await waitFor(() => {
       expect(screen.getByText(/Name is required./i)).toBeInTheDocument();
+      expect(handleSubmit).not.toHaveBeenCalled();
     });
-
-    expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   it('resets the form when calling reset', async () => {
@@ -97,13 +96,16 @@ describe('BaseForm', () => {
       </BaseForm>
     );
 
+    fireEvent.change(screen.getByPlaceholderText(/Name/i), { target: { value: 'Test' } });
     fireEvent.click(screen.getByText(/Submit/i));
 
     await waitFor(() => {
       expect(handleSubmit).toHaveBeenCalledWith({ name: 'Test' }, expect.anything());
     });
 
-    formRef.current?.reset();
+    act(() => {
+      formRef.current?.reset();
+    });
 
     await waitFor(() => {
       expect(screen.getByPlaceholderText(/Name/i)).toBeEmptyDOMElement();

@@ -4,13 +4,13 @@ import {
   type InputProps,
   FormField,
   Input,
-  Spinner,
 } from '@cloudscape-design/components';
 
 type FormInputProps<T extends FieldValues> = Omit<InputProps, 'name' | 'value'> &
   Omit<FormFieldProps, 'errorText'> &
   Pick<ControllerProps<T>, 'control' | 'name' | 'rules'> & {
     isLoading?: boolean;
+    testId?: string;
   };
 
 export const FormInput = <T extends FieldValues>({
@@ -18,6 +18,7 @@ export const FormInput = <T extends FieldValues>({
   control,
   rules,
   isLoading,
+  testId,
   ...props
 }: FormInputProps<T>) => {
   const {
@@ -43,11 +44,13 @@ export const FormInput = <T extends FieldValues>({
       secondaryControl={props.secondaryControl}
       errorText={error?.message}
     >
-      {isLoading ? (
-        <Spinner size='normal' />
-      ) : (
-        <Input {...props} {...field} ref={field.ref} onChange={handleOnChange} />
-      )}
+      <Input
+        data-testid={testId ? `${testId}_form-input` : 'form-input'}
+        {...props}
+        {...field}
+        ref={field.ref}
+        onChange={handleOnChange}
+      />
     </FormField>
   );
 };
