@@ -201,11 +201,11 @@ const Home = () => {
           <ColumnLayout columns={2}>
             <div>
               <Box variant='awsui-gen-ai-label'>Theme</Box>
-              <Box variant='awsui-value-large'>{theme}</Box>
+              <Box variant='awsui-key-label'>{theme}</Box>
             </div>
             <div>
               <Box variant='awsui-gen-ai-label'>Density</Box>
-              <Box variant='awsui-value-large'>{density}</Box>
+              <Box variant='awsui-key-label'>{density}</Box>
             </div>
           </ColumnLayout>
         </Container>
@@ -217,11 +217,11 @@ const Home = () => {
           <ColumnLayout columns={2}>
             <div>
               <Box variant='awsui-gen-ai-label'>Tools</Box>
-              <Box variant='awsui-value-large'>{isToolsOpen ? 'Open' : 'Closed'}</Box>
+              <Box variant='awsui-key-label'>{isToolsOpen ? 'Open' : 'Closed'}</Box>
             </div>
             <div>
               <Box variant='awsui-gen-ai-label'>Split panel</Box>
-              <Box variant='awsui-value-large'>{isSplitPanelOpen ? 'Open' : 'Closed'}</Box>
+              <Box variant='awsui-key-label'>{isSplitPanelOpen ? 'Open' : 'Closed'}</Box>
             </div>
           </ColumnLayout>
         </Container>
