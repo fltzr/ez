@@ -7,10 +7,7 @@ import {
   Spinner,
 } from '@cloudscape-design/components';
 
-type FormInputProps<T extends FieldValues> = Omit<
-  InputProps,
-  'name' | 'value' | 'options' | 'inputedOption'
-> &
+type FormInputProps<T extends FieldValues> = Omit<InputProps, 'name' | 'value'> &
   Omit<FormFieldProps, 'errorText'> &
   Pick<ControllerProps<T>, 'control' | 'name' | 'rules'> & {
     isLoading?: boolean;
@@ -29,7 +26,11 @@ export const FormInput = <T extends FieldValues>({
   } = useController<T>({ name, control, rules });
 
   const handleOnChange: InputProps['onChange'] = (event) => {
-    field.onChange(event.detail.value);
+    if (field.onChange) {
+      field.onChange(event.detail.value);
+    } else {
+      console.log('onChange is undefined.');
+    }
   };
 
   return (
