@@ -23,7 +23,7 @@ export const useManufacturerApi = () => {
 
   const createManufacturer = useMutation({
     mutationFn: async (manufacturer: Manufacturer) => {
-      await wait(5);
+      await wait(2);
 
       addManufacturer(manufacturer);
     },

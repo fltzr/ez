@@ -19,10 +19,13 @@ const defaultControlListConfig = {
 
 export const ControlListEditor = () => {
   const { setToolsOpen, setToolsContent } = useAppLayoutStore();
+
   const { control } = useFormContext();
+
   const {
     fieldState: { error },
   } = useController({ control, name: 'controlList' });
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: defaultControlListConfig.controlListPath,
@@ -80,6 +83,7 @@ export const ControlListEditor = () => {
               <FormSelect
                 control={control}
                 name={`controlList.${index}.accessType`}
+                placeholder='Select access type'
                 options={defaultControlListConfig.accessTypeOptions}
               />
             ),
@@ -98,7 +102,12 @@ export const ControlListEditor = () => {
           {
             label: 'Granted to',
             control: (_, index) => (
-              <FormInput control={control} name={`controlList.${index}.grantedTo`} />
+              <FormInput
+                stretch
+                control={control}
+                name={`controlList.${index}.grantedTo`}
+                placeholder='Enter role, group, user, etc.'
+              />
             ),
             info: (
               <Link
@@ -114,9 +123,7 @@ export const ControlListEditor = () => {
           },
         ]}
         onRemoveButtonClick={({ detail }) => remove(detail.itemIndex)}
-        onAddButtonClick={() =>
-          append({ accessType: 'GROUP', grantedTo: '', permittedActions: [] })
-        }
+        onAddButtonClick={() => append({ accessType: '', grantedTo: '', permittedActions: [] })}
       />
     </FormField>
   );

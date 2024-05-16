@@ -40,6 +40,8 @@ export const Header = () => {
                 type: 'button',
                 iconName: 'settings',
                 onClick: () => setIsPreferencesModalVisible(true),
+                ariaLabel: 'Open preferences modal',
+                iconAlt: 'Settings icon',
               },
             ]}
           />

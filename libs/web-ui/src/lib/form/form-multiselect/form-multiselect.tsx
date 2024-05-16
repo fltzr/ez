@@ -4,7 +4,6 @@ import {
   type MultiselectProps,
   FormField,
   Multiselect,
-  Spinner,
 } from '@cloudscape-design/components';
 
 type FormMultiselectProps<T extends FieldValues> = Omit<
@@ -13,7 +12,6 @@ type FormMultiselectProps<T extends FieldValues> = Omit<
 > &
   Omit<FormFieldProps, 'errorText'> &
   Pick<ControllerProps<T>, 'control' | 'name' | 'rules'> & {
-    isLoading?: boolean;
     options: MultiselectProps.Option[];
   };
 
@@ -21,7 +19,6 @@ export const FormMultiselect = <T extends FieldValues>({
   name,
   control,
   rules,
-  isLoading,
   options,
   ...props
 }: FormMultiselectProps<T>) => {
@@ -44,17 +41,13 @@ export const FormMultiselect = <T extends FieldValues>({
       secondaryControl={props.secondaryControl}
       errorText={error?.message}
     >
-      {isLoading ? (
-        <Spinner size='normal' />
-      ) : (
-        <Multiselect
-          {...props}
-          ref={field.ref}
-          options={options}
-          selectedOptions={field.value}
-          onChange={handleOnChange}
-        />
-      )}
+      <Multiselect
+        {...props}
+        ref={field.ref}
+        options={options}
+        selectedOptions={field.value}
+        onChange={handleOnChange}
+      />
     </FormField>
   );
 };

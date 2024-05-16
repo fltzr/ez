@@ -27,7 +27,6 @@ export const AddManufacturerModal = ({ isVisible, onClose }: AddManufacturerModa
 
     onClose();
   };
-
   return (
     <Modal
       size='large'

@@ -44,9 +44,8 @@ export const FormSelect = <T extends FieldValues>({
       <Select
         {...props}
         ref={field.ref}
-        placeholder={props.placeholder}
         options={options}
-        selectedOption={options.find((option) => option.value === field.value?.value) ?? {}}
+        selectedOption={field.value}
         onChange={handleOnChange}
       />
     </FormField>

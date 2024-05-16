@@ -24,10 +24,9 @@ export const SummaryPanel = () => {
           <KeyValuePair label='Price'>{formatPrice(values.price ?? 0)}</KeyValuePair>
         </ColumnLayout>
         <SpaceBetween direction='vertical' size='s'>
-          {/* <KeyValuePair label='Manufacturer'>{values.manufacturer?.label}</KeyValuePair>
+          <KeyValuePair label='Manufacturer'>{values.manufacturer?.label}</KeyValuePair>
           <KeyValuePair label='Category'>{values.catalogCategory?.label}</KeyValuePair>
-          <KeyValuePair label='Product type'>{values.productType?.label}</KeyValuePair> */}
-          {JSON.stringify(values, null, 2)}
+          <KeyValuePair label='Product type'>{values.productType?.label}</KeyValuePair>
         </SpaceBetween>
       </ExpandableSection>
       <Container fitHeight variant='stacked'>

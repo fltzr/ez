@@ -6,6 +6,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "clean": "rimraf .nx dist tmp node_modules",
+    "web": "nx run ez-web:serve",
+    "api": "nx run ez-api:serve",
     "build:api": "nx run ez-api:build:production && node ./scripts/post-build.js",
     "build:web": "nx run ez-web:build:production && node ./scripts/post-build.js",
     "start": "nx run --target"
