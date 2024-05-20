@@ -31,7 +31,7 @@ const CreateProductPage = () => {
   };
 
   return (
-    <div style={{ width: '1175px' }}>
+    <div style={{ maxWidth: '875px' }}>
       <ProductForms
         formRef={formRef}
         setManufacturerModalOpen={setIsManufacturerModalOpen}

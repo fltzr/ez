@@ -80,7 +80,7 @@ export const AddManufacturerModal = ({ isVisible, onClose }: AddManufacturerModa
       >
         <SpaceBetween direction='vertical' size='m'>
           <FormInput name='name' label='Name' />
-          <ControlListEditor />
+          <ControlListEditor showInfoLinks={false} />
         </SpaceBetween>
       </BaseForm>
     </Modal>

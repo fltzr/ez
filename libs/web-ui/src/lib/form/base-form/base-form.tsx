@@ -1,5 +1,11 @@
 import { type ReactNode, type Ref, useImperativeHandle } from 'react';
-import { type FieldValues, type SubmitHandler, FormProvider, useForm } from 'react-hook-form';
+import {
+  type FieldValues,
+  type SubmitHandler,
+  type DefaultValues,
+  FormProvider,
+  useForm,
+} from 'react-hook-form';
 import type { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type FormProps, Form } from '@cloudscape-design/components';
@@ -8,6 +14,7 @@ type BaseFormProps<TFormValues extends FieldValues> = {
   formId: string;
   testId?: string;
   zodSchema: z.ZodSchema;
+  defaultValues?: DefaultValues<TFormValues>;
   onSubmit: SubmitHandler<TFormValues>;
   children: ReactNode;
   formRef: Ref<{ reset: () => void }>;
@@ -17,6 +24,7 @@ export const BaseForm = <TFormValues extends FieldValues>({
   formId,
   testId,
   zodSchema,
+  defaultValues,
   onSubmit,
   children,
   formRef,
@@ -24,6 +32,7 @@ export const BaseForm = <TFormValues extends FieldValues>({
 }: BaseFormProps<TFormValues>) => {
   const methods = useForm<TFormValues>({
     resolver: zodResolver(zodSchema),
+    defaultValues,
   });
 
   useImperativeHandle(formRef, () => ({
@@ -39,7 +48,11 @@ export const BaseForm = <TFormValues extends FieldValues>({
         data-testid={testId ? `base-form_${testId}` : 'base-form'}
         onSubmit={(event) => {
           event.preventDefault();
-          void methods.handleSubmit(onSubmit)(event);
+          void methods
+            .handleSubmit(onSubmit)(event)
+            .catch((error) => {
+              console.error(error);
+            });
         }}
       >
         <Form {...formProps}>{children}</Form>

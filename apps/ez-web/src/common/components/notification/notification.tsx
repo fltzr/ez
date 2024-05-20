@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { Flashbar } from '@cloudscape-design/components';
 import { useNotificationStore } from '@ez/web-state-management';
 
@@ -8,39 +8,25 @@ export const Notifications = () => {
     removeNotification: s.removeNotification,
   }));
 
-  const handleDismiss = useCallback(
-    (id: string) => {
-      removeNotification(id);
-    },
-    [removeNotification]
-  );
-
-  const autoDismissable = useMemo(
-    () => notifications.filter((n) => n.autoDismiss),
-    [notifications]
-  );
-
   useEffect(() => {
     // Create timers only for notifications that should auto-dismiss
-    const timers = autoDismissable.map((n) =>
-      setTimeout(() => {
-        handleDismiss(n.id ?? '');
-      }, 5000)
-    );
+    const timers = notifications
+      .filter((n) => n.autoDismiss)
+      .map((n) =>
+        setTimeout(() => {
+          removeNotification(n.id ?? '');
+        }, 5000)
+      );
 
     return () => {
       timers.forEach(clearTimeout);
     };
-  }, [handleDismiss, autoDismissable]);
+  }, [removeNotification, notifications]);
 
-  const notificationItems = useMemo(
-    () =>
-      notifications.map((n) => ({
-        ...n,
-        onDismiss: () => handleDismiss(n.id ?? ''),
-      })),
-    [notifications, handleDismiss]
-  );
+  const notificationItems = notifications.map((n) => ({
+    ...n,
+    onDismiss: () => removeNotification(n.id ?? ''),
+  }));
 
   return <Flashbar stackItems items={notificationItems} />;
 };

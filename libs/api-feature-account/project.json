@@ -1,0 +1,9 @@
+{
+  "name": "api-feature-account",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api-feature-account/src",
+  "projectType": "library",
+  "tags": ["scope:api", "type:core"],
+  "// targets": "to see all targets run: nx show project api-feature-account --web",
+  "targets": {}
+}

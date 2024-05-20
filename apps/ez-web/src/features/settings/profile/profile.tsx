@@ -1,6 +1,6 @@
 import { Box, Button, Header, SpaceBetween } from '@cloudscape-design/components';
 import { AccountSettingsContainer } from './components/account-settings-container';
-import { ContactInformationContainer } from './components/contact-information-container';
+import { ContactInformationContainer } from './components/contact-information/container';
 import { AlternateContactsContainer } from './components/alternate-contacts-container';
 import { Breadcrumbs } from '@ez/web-ui';
 

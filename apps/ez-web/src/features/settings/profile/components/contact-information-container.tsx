@@ -6,22 +6,34 @@ import {
   Header,
   SpaceBetween,
 } from '@cloudscape-design/components';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { FormInput } from '@ez/web-ui';
+import { BaseSyntheticEvent, useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { BaseForm, FormInput } from '@ez/web-ui';
+import { z } from 'zod';
+
+const contactInformationSchema = z.object({
+  fullName: z.string().min(1, 'Invalid name.'),
+  companyName: z.string().min(1, 'Invalid company name.'),
+  address: z.string(),
+  phoneNumber: z.string().min(11, 'Invalid valid phone number.'),
+  websiteUrl: z.string().url({ message: 'Invalid website URL.' }),
+});
+
+type ContactInformation = z.infer<typeof contactInformationSchema>;
+
+const defaultContactInformation: ContactInformation = {
+  fullName: 'John Doe',
+  companyName: 'Example Corp',
+  address: '1234 Example St',
+  phoneNumber: '+1 123 456 7890',
+  websiteUrl: 'None',
+};
 
 export const ContactInformationContainer = () => {
-  const { control } = useForm();
-  const [isEditing, setIsEditing] = useState(false);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [form, setForm] = useState({
-    fullName: 'John Doe',
-    companyName: 'Example Corp',
-    address: '1234 Example St',
-    phoneNumber: '+1 123 456 7890',
-    websiteUrl: 'None',
+  const { control, getValues } = useForm<ContactInformation>({
+    defaultValues: defaultContactInformation,
   });
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -69,7 +81,7 @@ export const ContactInformationContainer = () => {
       <ColumnLayout borders='vertical' columns={3}>
         {isEditing ? (
           <>
-            <Box variant='div'>
+            {/* <Box variant='div'>
               <FormInput control={control} name='fullName' label='Full name' />
             </Box>
             <Box variant='div'>
@@ -77,7 +89,14 @@ export const ContactInformationContainer = () => {
             </Box>
             <Box variant='div'>
               <FormInput control={control} name='companyName' label='' />
-            </Box>
+            </Box> */}
+            <BaseForm 
+              formId={''} 
+              zodSchema={contactInformationSchema} 
+              onSubmit={}
+              formRef={null}>
+                
+            
           </>
         ) : (
           <>
@@ -85,31 +104,31 @@ export const ContactInformationContainer = () => {
               <Box fontSize='body-m' color='text-status-inactive'>
                 Full name
               </Box>
-              <Box>{form.fullName}</Box>
+              <Box>{getValues('fullName')}</Box>
             </Box>
             <Box variant='div'>
               <Box fontSize='body-m' color='text-status-inactive'>
                 Company name
               </Box>
-              <Box>{form.companyName}</Box>
+              <Box>{getValues('companyName')}</Box>
             </Box>
             <Box variant='div'>
               <Box fontSize='body-m' color='text-status-inactive'>
                 Address
               </Box>
-              <Box>{form.address}</Box>
+              <Box>{getValues('address')}</Box>
             </Box>
             <Box variant='div'>
               <Box fontSize='body-m' color='text-status-inactive'>
                 Phone number
               </Box>
-              <Box>{form.phoneNumber}</Box>
+              <Box>{getValues('phoneNumber')}</Box>
             </Box>
             <Box variant='div'>
               <Box fontSize='body-m' color='text-status-inactive'>
                 Website URL
               </Box>
-              <Box>{form.websiteUrl}</Box>
+              <Box>{getValues('websiteUrl')}</Box>
             </Box>
           </>
         )}

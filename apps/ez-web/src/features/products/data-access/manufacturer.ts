@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { type Manufacturer, useProductStore } from '../store/use-product-store';
+import { type MetaItem, useProductStore } from '../store/use-product-store';
 
 const wait = (seconds: number) =>
   new Promise((resolve) => {
@@ -22,7 +22,7 @@ export const useManufacturerApi = () => {
   });
 
   const createManufacturer = useMutation({
-    mutationFn: async (manufacturer: Manufacturer) => {
+    mutationFn: async (manufacturer: MetaItem) => {
       await wait(2);
 
       addManufacturer(manufacturer);

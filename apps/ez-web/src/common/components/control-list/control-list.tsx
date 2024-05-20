@@ -17,7 +17,9 @@ const defaultControlListConfig = {
   controlListPath: 'controlList',
 };
 
-export const ControlListEditor = () => {
+type ControlListEditorProps = { showInfoLinks?: boolean };
+
+export const ControlListEditor = ({ showInfoLinks }: ControlListEditorProps) => {
   const { setToolsOpen, setToolsContent } = useAppLayoutStore();
 
   const { control } = useFormContext();
@@ -39,15 +41,19 @@ export const ControlListEditor = () => {
       description='Controls are used to define the access permissions for the resource.'
       constraintText='At least one control must be defined.'
       info={
-        <Link
-          variant='info'
-          onFollow={() => {
-            setToolsOpen(true);
-            setToolsContent(<HelpPanel>control-list</HelpPanel>);
-          }}
-        >
-          info
-        </Link>
+        <>
+          {showInfoLinks && (
+            <Link
+              variant='info'
+              onFollow={() => {
+                setToolsOpen(true);
+                setToolsContent(<HelpPanel>control-list</HelpPanel>);
+              }}
+            >
+              info
+            </Link>
+          )}
+        </>
       }
     >
       <AttributeEditor
@@ -65,7 +71,7 @@ export const ControlListEditor = () => {
                 options={defaultControlListConfig.permittedActions}
               />
             ),
-            info: (
+            info: showInfoLinks && (
               <Link
                 variant='info'
                 onFollow={() => {
@@ -87,7 +93,7 @@ export const ControlListEditor = () => {
                 options={defaultControlListConfig.accessTypeOptions}
               />
             ),
-            info: (
+            info: showInfoLinks && (
               <Link
                 variant='info'
                 onFollow={() => {
@@ -109,7 +115,7 @@ export const ControlListEditor = () => {
                 placeholder='Enter role, group, user, etc.'
               />
             ),
-            info: (
+            info: showInfoLinks && (
               <Link
                 variant='info'
                 onFollow={() => {

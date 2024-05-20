@@ -9,7 +9,6 @@ import {
 } from '@cloudscape-design/components';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { type Product, productSchema } from '../../schema/product';
-import { SummaryPanel } from '../summary-panel';
 import { ProductFormPanel } from './product-form-panel';
 import { MetaFormPanel } from './meta-form-panel';
 import { Breadcrumbs, BaseForm } from '@ez/web-ui';
@@ -58,39 +57,34 @@ export const ProductForms = ({
       }))}
       onSubmit={onSubmit}
     >
-      <Grid
-        gridDefinition={[{ colspan: { default: 12, m: 8 } }, { colspan: { default: 12, m: 4 } }]}
-      >
-        <SpaceBetween direction='vertical' size='m'>
-          <Breadcrumbs />
-          <Header
-            variant='h1'
-            info={
-              <Link
-                variant='info'
-                onFollow={() => {
-                  setToolsContent(<HelpPanel>form_create-product</HelpPanel>);
-                  setToolsOpen(true);
-                }}
-              >
-                info
-              </Link>
-            }
-          >
-            Create a product
-          </Header>
-          <ProductFormPanel />
-          <MetaFormPanel
-            setManufacturerModalOpen={setManufacturerModalOpen}
-            setProductTypeModalOpen={setProductTypeModalOpen}
-            setCatalogCategoryModalOpen={setCatalogCategoryModalOpen}
-          />
-          <ExpandableSection variant='container' headerText='Access control list'>
-            <ControlListEditor />
-          </ExpandableSection>
-        </SpaceBetween>
-        <SummaryPanel />
-      </Grid>
+      <SpaceBetween direction='vertical' size='m'>
+        <Breadcrumbs />
+        <Header
+          variant='h1'
+          info={
+            <Link
+              variant='info'
+              onFollow={() => {
+                setToolsContent(<HelpPanel>form_create-product</HelpPanel>);
+                setToolsOpen(true);
+              }}
+            >
+              info
+            </Link>
+          }
+        >
+          Create a product
+        </Header>
+        <ProductFormPanel />
+        <MetaFormPanel
+          setManufacturerModalOpen={setManufacturerModalOpen}
+          setProductTypeModalOpen={setProductTypeModalOpen}
+          setCatalogCategoryModalOpen={setCatalogCategoryModalOpen}
+        />
+        <ExpandableSection variant='container' headerText='Access control list'>
+          <ControlListEditor />
+        </ExpandableSection>
+      </SpaceBetween>
     </BaseForm>
   );
 };
