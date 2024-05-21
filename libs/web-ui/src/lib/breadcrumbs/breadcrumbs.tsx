@@ -11,7 +11,7 @@ export const Breadcrumbs = () => {
     .map((m) => ({ text: m.handle?.crumb ?? '', href: m.pathname }));
 
   return (
-    crumbs.length > 1 && (
+    crumbs.length > 0 && (
       <BreadcrumbGroup
         items={crumbs}
         onClick={(event) => {

@@ -1,11 +1,10 @@
-import { Box, Button, Container, Header, SpaceBetween } from '@cloudscape-design/components';
-import { BaseSyntheticEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { z } from 'zod';
+import { Box, Button, Container, Header, SpaceBetween } from '@cloudscape-design/components';
+import { BaseForm } from '@ez/web-ui';
+import { useLocalStorage } from '../../../../../common/hooks/use-local-storage';
 import { ContactInformationEdit } from './edit';
 import { ContactInformationView } from './view';
-import { BaseForm } from '@ez/web-ui';
-import { FieldValues } from 'react-hook-form';
-import { useLocalStorage } from '../../../../../common/hooks/use-local-storage';
 
 const wait = (seconds: number) =>
   new Promise((resolve) => {
@@ -47,9 +46,10 @@ export const ContactInformationContainer = () => {
     <BaseForm
       formId={'form__contact-information'}
       zodSchema={contactInformationSchema}
-      defaultValues={getDefaultContactInformation}
+      defaultValues={getDefaultContactInformation()}
       onSubmit={async (data) => {
-        const formData = await data();
+        console.log(`Data: ${JSON.stringify(data, null, 2)}`);
+        const formData = await data;
         setContactInformation({ ...formData });
       }}
       formRef={formRef}

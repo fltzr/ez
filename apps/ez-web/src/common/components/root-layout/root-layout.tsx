@@ -37,6 +37,7 @@ const RootLayout = () => {
         onSplitPanelToggle={({ detail: { open } }) => {
           appLayoutStore.setSplitPanelOpen(open);
         }}
+        drawers={appLayoutStore.drawerPanels}
       />
     </>
   );

@@ -1,17 +1,21 @@
 import ColumnLayout from '@cloudscape-design/components/column-layout';
-import { useFormContext } from 'react-hook-form';
+import { useController, useFormContext } from 'react-hook-form';
 import { ContactInformation } from './container';
 import { Box } from '@cloudscape-design/components';
 
 export const ContactInformationView = () => {
-  const { getValues } = useFormContext<ContactInformation>();
+  const { getValues, control } = useFormContext<ContactInformation>();
+  const {
+    field: { value: fullNameValue },
+  } = useController({ control, name: 'fullName' });
+
   return (
     <ColumnLayout columns={3} borders='vertical'>
       <Box variant='div'>
         <Box fontSize='body-m' color='text-status-inactive'>
           Full name
         </Box>
-        <Box>{getValues('fullName')}</Box>
+        <Box>{fullNameValue}</Box>
       </Box>
       <Box variant='div'>
         <Box fontSize='body-m' color='text-status-inactive'>

@@ -47,12 +47,10 @@ export const BaseForm = <TFormValues extends FieldValues>({
         id={formId}
         data-testid={testId ? `base-form_${testId}` : 'base-form'}
         onSubmit={(event) => {
+          console.log(event);
           event.preventDefault();
-          void methods
-            .handleSubmit(onSubmit)(event)
-            .catch((error) => {
-              console.error(error);
-            });
+          event.stopPropagation();
+          methods.handleSubmit(onSubmit)(event);
         }}
       >
         <Form {...formProps}>{children}</Form>

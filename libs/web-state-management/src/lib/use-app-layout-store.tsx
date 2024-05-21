@@ -9,6 +9,7 @@ type AppLayoutState = {
   // Content states
   toolsContent?: ReactNode;
   splitPanelContent?: ReactNode;
+  drawerPanels: Array<AppLayoutProps.Drawer>;
   // Toggle states
   isNavigationOpen: boolean;
   isToolsOpen: boolean;
@@ -23,6 +24,8 @@ type AppLayoutActions = {
   // Content setters
   setToolsContent: (content?: ReactNode) => void;
   setSplitPanelContent: (content?: ReactNode) => void;
+  addDrawerPanel: (drawer: AppLayoutProps.Drawer) => void;
+  removeDrawerPanel: (id: string) => void;
   // Toggle setters
   setNavigationOpen: (state: boolean) => void;
   setToolsOpen: (state: boolean) => void;
@@ -40,6 +43,7 @@ export const useAppLayoutStore = create<AppLayoutState & AppLayoutActions>()(
       // Content
       toolsContent: undefined,
       splitPanelContent: undefined,
+      drawerPanels: [],
       // Toggles
       isNavigationOpen: true,
       isToolsOpen: false,
@@ -52,6 +56,16 @@ export const useAppLayoutStore = create<AppLayoutState & AppLayoutActions>()(
       // Content setters
       setToolsContent: (toolsContent) => set(() => ({ toolsContent })),
       setSplitPanelContent: (splitPanelContent) => set(() => ({ splitPanelContent })),
+      addDrawerPanel: (drawer) =>
+        set((s) => {
+          if (s.drawerPanels.every((d) => d.id !== drawer.id)) {
+            return { drawerPanels: [{ ...drawer }, ...s.drawerPanels] };
+          }
+
+          return { drawerPanels: s.drawerPanels };
+        }),
+      removeDrawerPanel: (id) =>
+        set((s) => ({ drawerPanels: s.drawerPanels?.filter((d) => d.id !== id) })),
       // Toggle setters
       setNavigationOpen: (isNavigationOpen) => set(() => ({ isNavigationOpen })),
       setToolsOpen: (isToolsOpen) => set(() => ({ isToolsOpen })),

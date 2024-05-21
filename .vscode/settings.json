@@ -5,6 +5,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "always"
   },
-  "eslint.validate": ["javascript", "typescript", "typescriptreact", "html"],
-  "eslint.experimental.useFlatConfig": false
+  "eslint.codeActionsOnSave.mode": "all"
 }

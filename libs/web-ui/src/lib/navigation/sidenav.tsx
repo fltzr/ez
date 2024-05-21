@@ -37,6 +37,12 @@ export const Navigation = () => {
             },
           ],
         },
+        {
+          type: 'expandable-link-group',
+          text: 'Todos',
+          href: '/todos',
+          items: [],
+        },
         { type: 'divider' },
         {
           type: 'section',

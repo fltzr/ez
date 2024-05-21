@@ -20,6 +20,13 @@ export const routes: RouteObject[] = [
         },
       },
       {
+        path: 'todos',
+        lazy: () => import('./features/todos/todo'),
+        handle: {
+          crumb: 'Todos',
+        },
+      },
+      {
         path: 'settings',
         lazy: () => import('./features/settings/settings'),
         handle: {

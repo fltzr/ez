@@ -41,19 +41,17 @@ export const ControlListEditor = ({ showInfoLinks }: ControlListEditorProps) => 
       description='Controls are used to define the access permissions for the resource.'
       constraintText='At least one control must be defined.'
       info={
-        <>
-          {showInfoLinks && (
-            <Link
-              variant='info'
-              onFollow={() => {
-                setToolsOpen(true);
-                setToolsContent(<HelpPanel>control-list</HelpPanel>);
-              }}
-            >
-              info
-            </Link>
-          )}
-        </>
+        showInfoLinks && (
+          <Link
+            variant='info'
+            onFollow={() => {
+              setToolsOpen(true);
+              setToolsContent(<HelpPanel>control-list</HelpPanel>);
+            }}
+          >
+            info
+          </Link>
+        )
       }
     >
       <AttributeEditor
