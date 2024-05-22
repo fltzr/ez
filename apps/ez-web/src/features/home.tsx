@@ -13,6 +13,7 @@ import {
 import { Mode as Theme, Density } from '@cloudscape-design/global-styles';
 import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 import { Breadcrumbs } from '@ez/web-ui';
+import { WindfinderWidget } from '../common/components/wind-finder-widget';
 
 const ExampleToolsContent = () => {
   const title = 'Tools content example';
@@ -192,6 +193,7 @@ const Home = () => {
 
   return (
     <SpaceBetween size='xxl' direction='vertical'>
+      <WindfinderWidget />
       <ColumnLayout columns={2}>
         <Container
           fitHeight
@@ -226,11 +228,10 @@ const Home = () => {
           </ColumnLayout>
         </Container>
       </ColumnLayout>
-      <ColumnLayout columns={2}>
+      <ColumnLayout columns={1}>
         <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
           <NotificationActions />
         </Container>
-        <div></div>
       </ColumnLayout>
     </SpaceBetween>
   );

@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { useAppLayoutStore } from '@ez/web-state-management';
 import { useEffect } from 'react';
 import { CreateTodoItemPanel } from './components/create-todo-item-panel';
-import { useLocalStorage } from 'react-use';
+import { useLocalStorage } from '../../common/hooks/use-local-storage';
 
 const initialItems: TodoItemSchema[] = [
   {
@@ -24,10 +24,10 @@ const initialItems: TodoItemSchema[] = [
 
 const TodoPage = () => {
   const { addDrawerPanel, removeDrawerPanel } = useAppLayoutStore();
-  const [todoItems, setTodoItems] = useLocalStorage<TodoItemSchema[]>(
-    'internal__todo-item-schema',
-    initialItems
-  );
+  const [todoItems, setTodoItems] = useLocalStorage<TodoItemSchema[]>({
+    localstorageKey: 'internal__todo-item-schema',
+    initialValue: initialItems,
+  });
 
   useEffect(() => {
     const drawerId = 'drawer__create-todo-item';
@@ -60,4 +60,4 @@ const TodoPage = () => {
   );
 };
 
-export default TodoPage;
+export const Component = TodoPage;

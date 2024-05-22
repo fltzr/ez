@@ -9,13 +9,14 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/ez-web',
 
   server: {
-    port: 4000,
-    host: 'localhost',
+    host: '0.0.0.0',
+    port: 4100,
   },
 
   preview: {
     port: 4100,
-    host: 'localhost',
+    host: '0.0.0.0',
+    
   },
 
   plugins: [

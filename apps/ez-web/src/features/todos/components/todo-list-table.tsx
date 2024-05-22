@@ -12,9 +12,10 @@ import { useLocalStorage } from '../../../common/hooks/use-local-storage';
 import { TableEmptyState, TableNoMatchState } from './table-states';
 
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 export const todoItemSchema = z.object({
-  id: z.string().nanoid().optional(),
+  id: z.string().default(() => nanoid(5)),
   title: z
     .string({ message: 'Title is required for a todo item.' })
     .min(1, 'Title is required for a todo item.')

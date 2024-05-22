@@ -5,6 +5,7 @@ import {
   type DefaultValues,
   FormProvider,
   useForm,
+  SubmitErrorHandler,
 } from 'react-hook-form';
 import type { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,6 +17,7 @@ type BaseFormProps<TFormValues extends FieldValues> = {
   zodSchema: z.ZodSchema;
   defaultValues?: DefaultValues<TFormValues>;
   onSubmit: SubmitHandler<TFormValues>;
+  onError: SubmitErrorHandler<TFormValues>;
   children: ReactNode;
   formRef: Ref<{ reset: () => void }>;
 } & Omit<FormProps, 'children' | 'className' | 'id'>;
@@ -26,6 +28,7 @@ export const BaseForm = <TFormValues extends FieldValues>({
   zodSchema,
   defaultValues,
   onSubmit,
+  onError,
   children,
   formRef,
   ...formProps
@@ -47,10 +50,10 @@ export const BaseForm = <TFormValues extends FieldValues>({
         id={formId}
         data-testid={testId ? `base-form_${testId}` : 'base-form'}
         onSubmit={(event) => {
-          console.log(event);
           event.preventDefault();
           event.stopPropagation();
-          methods.handleSubmit(onSubmit)(event);
+
+          methods.handleSubmit(onSubmit, onError)(event);
         }}
       >
         <Form {...formProps}>{children}</Form>

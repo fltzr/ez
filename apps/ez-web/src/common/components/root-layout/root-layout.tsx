@@ -22,7 +22,6 @@ const RootLayout = () => {
         navigation={<Navigation />}
         navigationOpen={appLayoutStore.isNavigationOpen}
         tools={appLayoutStore.toolsContent ?? undefined}
-        toolsOpen={appLayoutStore.isToolsOpen}
         toolsHide={appLayoutStore.toolsContent === undefined}
         splitPanel={appLayoutStore.splitPanelContent}
         splitPanelOpen={appLayoutStore.isSplitPanelOpen}
