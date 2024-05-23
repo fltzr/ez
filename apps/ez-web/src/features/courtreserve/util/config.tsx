@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { DateTime } from 'luxon';
 import { Box, StatusIndicator, type TableProps } from '@cloudscape-design/components';
+
 import type { CourtreserveEvent } from './types';
 
 const formattedDateTime = ({ date }: { date: Date }) => {

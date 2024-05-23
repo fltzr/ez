@@ -48,12 +48,59 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "prefer": "type-imports",
+            "disallowTypeAnnotations": false
+          }
+        ]
+      }
     },
     {
       "files": ["*.tsx"],
+      "extends": ["plugin:@tanstack/eslint-plugin-query/recommended"],
       "rules": {
-        "react-compiler/react-compiler": "error"
+        "react-compiler/react-compiler": "error",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external"],
+              ["internal", "parent", "sibling", "index"]
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "pathGroups": [
+              {
+                "pattern": "react",
+                "group": "builtin",
+                "position": "before"
+              },
+              {
+                "pattern": "react**",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "@cloudscape-design/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@ez/**",
+                "group": "internal",
+                "position": "before"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["builtin"],
+            "distinctGroup": false
+          }
+        ]
       }
     }
   ]

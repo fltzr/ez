@@ -1,12 +1,13 @@
-import { nanoid } from 'nanoid';
-import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
 import { useRef, useState } from 'react';
 import { isAxiosError } from 'axios';
-import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
-import { useProductTypeApi } from '../../data-access/product-type';
-import { ControlListEditor } from '../../../../common/components/control-list/control-list';
-import { BaseForm, FormInput } from '@ez/web-ui';
+import { nanoid } from 'nanoid';
+import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
+
 import { useNotificationStore } from '@ez/web-state-management';
+import { BaseForm, FormInput } from '@ez/web-ui';
+import { ControlListEditor } from '../../../../common/components/control-list/control-list';
+import { useProductTypeApi } from '../../data-access/product-type';
+import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 
 type AddProductTypeModalProps = {
   isVisible: boolean;

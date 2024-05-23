@@ -1,10 +1,12 @@
-import { Box, SpaceBetween } from '@cloudscape-design/components';
-import { Breadcrumbs } from '@ez/web-ui';
-import { TodoItemSchema, TodoListTable } from './components/todo-list-table';
-import { nanoid } from 'nanoid';
-import { useAppLayoutStore } from '@ez/web-state-management';
 import { useEffect } from 'react';
+import { nanoid } from 'nanoid';
+import { Box, SpaceBetween } from '@cloudscape-design/components';
+
+import { useAppLayoutStore } from '@ez/web-state-management';
+import { Breadcrumbs } from '@ez/web-ui';
 import { CreateTodoItemPanel } from './components/create-todo-item-panel';
+import type { TodoItemSchema } from './components/todo-list-table';
+import { TodoListTable } from './components/todo-list-table';
 import { useLocalStorage } from '../../common/hooks/use-local-storage';
 
 const initialItems: TodoItemSchema[] = [

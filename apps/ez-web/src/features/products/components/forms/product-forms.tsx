@@ -1,4 +1,4 @@
-import { useEffect, type Ref } from 'react';
+import { type Ref, useEffect } from 'react';
 import {
   ExpandableSection,
   Header,
@@ -6,13 +6,13 @@ import {
   Link,
   SpaceBetween,
 } from '@cloudscape-design/components';
+
+import { useAppLayoutStore } from '@ez/web-state-management';
+import { BaseForm, Breadcrumbs } from '@ez/web-ui';
+import { MetaFormPanel } from './meta-form-panel';
+import { ProductFormPanel } from './product-form-panel';
 import { ControlListEditor } from '../../../../common/components/control-list/control-list';
 import { type Product, productSchema } from '../../schema/product';
-import { ProductFormPanel } from './product-form-panel';
-import { MetaFormPanel } from './meta-form-panel';
-import { Breadcrumbs, BaseForm } from '@ez/web-ui';
-import { useAppLayoutStore } from '@ez/web-state-management';
-import { isNativeError } from 'util/types';
 
 type ProductFormProps = {
   formRef: Ref<{ reset: () => void }>;
@@ -56,9 +56,7 @@ export const ProductForms = ({
       }))}
       onSubmit={onSubmit}
       onError={(error) => {
-        if (isNativeError(error)) {
-          console.log('Form errors: ', error);
-        }
+        console.log('Form errors: ', error);
       }}
     >
       <SpaceBetween direction='vertical' size='m'>

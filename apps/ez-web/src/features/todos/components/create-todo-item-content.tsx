@@ -1,7 +1,8 @@
+import { Box, Button, SpaceBetween } from '@cloudscape-design/components';
 import { useFormContext } from 'react-hook-form';
-import { TodoItemSchema } from './todo-list-table';
-import { SpaceBetween, Button, Box } from '@cloudscape-design/components';
+
 import { FormInput } from '@ez/web-ui';
+import type { TodoItemSchema } from './todo-list-table';
 
 export const CreateTodoItemContent = () => {
   const { control } = useFormContext<TodoItemSchema>();

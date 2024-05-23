@@ -10,7 +10,7 @@ export const useManufacturerApi = () => {
   const { manufacturers, addManufacturer } = useProductStore();
 
   const getManufacturers = useQuery({
-    queryKey: ['manufacturers'],
+    queryKey: ['manufacturers', manufacturers],
     queryFn: async () => {
       console.info('Fetching manufacturers...');
 

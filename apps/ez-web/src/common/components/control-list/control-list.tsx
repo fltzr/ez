@@ -1,7 +1,8 @@
 import { AttributeEditor, FormField, HelpPanel, Link } from '@cloudscape-design/components';
 import { useController, useFieldArray, useFormContext } from 'react-hook-form';
+
 import { useAppLayoutStore } from '@ez/web-state-management';
-import { FormInput, FormSelect, FormMultiselect } from '@ez/web-ui';
+import { FormInput, FormMultiselect, FormSelect } from '@ez/web-ui';
 
 const defaultControlListConfig = {
   permittedActions: [

@@ -1,8 +1,9 @@
-import ColumnLayout from '@cloudscape-design/components/column-layout';
-import { FormInput } from '@ez/web-ui';
-import { useFormContext } from 'react-hook-form';
-import { ContactInformation } from './container';
 import { Box } from '@cloudscape-design/components';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import { useFormContext } from 'react-hook-form';
+
+import { FormInput } from '@ez/web-ui';
+import type { ContactInformation } from './container';
 
 export const ContactInformationEdit = () => {
   const { control } = useFormContext<ContactInformation>();

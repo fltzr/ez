@@ -1,5 +1,6 @@
 import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
+
 import { Loader } from '@ez/web-ui';
 import { App } from './app/app';
 

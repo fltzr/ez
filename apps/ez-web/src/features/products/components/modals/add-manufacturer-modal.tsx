@@ -1,12 +1,13 @@
-import { nanoid } from 'nanoid';
-import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
 import { useRef, useState } from 'react';
 import { isAxiosError } from 'axios';
-import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
-import { useManufacturerApi } from '../../data-access/manufacturer';
-import { ControlListEditor } from '../../../../common/components/control-list/control-list';
-import { BaseForm, FormInput } from '@ez/web-ui';
+import { nanoid } from 'nanoid';
+import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
+
 import { useNotificationStore } from '@ez/web-state-management';
+import { BaseForm, FormInput } from '@ez/web-ui';
+import { ControlListEditor } from '../../../../common/components/control-list/control-list';
+import { useManufacturerApi } from '../../data-access/manufacturer';
+import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 
 type AddManufacturerModalProps = {
   isVisible: boolean;

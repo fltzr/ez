@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 import { z } from 'zod';
 import { Box, Button, Container, Header, SpaceBetween } from '@cloudscape-design/components';
+
 import { BaseForm } from '@ez/web-ui';
-import { useLocalStorage } from '../../../../../common/hooks/use-local-storage';
 import { ContactInformationEdit } from './edit';
 import { ContactInformationView } from './view';
+import { useLocalStorage } from '../../../../../common/hooks/use-local-storage';
 
 const wait = (seconds: number) =>
   new Promise((resolve) => {

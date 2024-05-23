@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 import type { ControlList } from '../../../common/schemas/control-list';
 
 export type MetaItem = {

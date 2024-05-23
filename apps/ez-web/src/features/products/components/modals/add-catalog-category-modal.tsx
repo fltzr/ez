@@ -1,8 +1,9 @@
-import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
 import { useRef } from 'react';
-import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
-import { ControlListEditor } from '../../../../common/components/control-list/control-list';
+import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
+
 import { BaseForm, FormInput } from '@ez/web-ui';
+import { ControlListEditor } from '../../../../common/components/control-list/control-list';
+import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 
 type AddCatalogCategoryModalProps = {
   isVisible: boolean;

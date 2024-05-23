@@ -10,7 +10,7 @@ export const useProductTypeApi = () => {
   const { productTypes, addProductType } = useProductStore();
 
   const getProductTypes = useQuery({
-    queryKey: ['productTypes'],
+    queryKey: ['productTypes', productTypes],
     queryFn: async () => {
       console.info('Fetching productTypes...');
 

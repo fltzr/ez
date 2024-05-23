@@ -1,18 +1,18 @@
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import { z } from 'zod';
 import { useCollection } from '@cloudscape-design/collection-hooks';
 import {
-  type TableProps,
+  Button,
   type CollectionPreferencesProps,
-  Table,
   Header,
   StatusIndicator,
-  Button,
+  Table,
+  type TableProps,
 } from '@cloudscape-design/components';
-import { useLocalStorage } from '../../../common/hooks/use-local-storage';
-import { TableEmptyState, TableNoMatchState } from './table-states';
 
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
+import { TableEmptyState, TableNoMatchState } from './table-states';
+import { useLocalStorage } from '../../../common/hooks/use-local-storage';
 
 export const todoItemSchema = z.object({
   id: z.string().default(() => nanoid(5)),
@@ -21,7 +21,8 @@ export const todoItemSchema = z.object({
     .min(1, 'Title is required for a todo item.')
     .max(25, 'Title must be less than 25 characters.'),
   description: z.string().max(50, 'Description must be less than 25 characters.').optional(),
-  status: z.enum(['success', 'in-progress', 'pending']).default('in-progress').optional(),
+
+  status: z.enum(['success', 'in-progress', 'info']).default('in-progress'),
 });
 
 export type TodoItemSchema = z.infer<typeof todoItemSchema>;
@@ -31,9 +32,7 @@ const getStatusText = (status: TodoItemSchema['status']) =>
     ? 'Completed'
     : status === 'in-progress'
       ? 'In progress'
-      : status === 'pending'
-        ? 'Pending'
-        : 'NA';
+      : status === 'info' ?? '';
 
 const todoListTableColumnDefinitions: TableProps<Partial<TodoItemSchema>>['columnDefinitions'] = [
   {

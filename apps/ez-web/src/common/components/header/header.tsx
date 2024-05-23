@@ -1,7 +1,8 @@
-import { lazy, useState, type ReactNode } from 'react';
+import { type ReactNode, lazy, useState } from 'react';
+import { TopNavigation } from '@cloudscape-design/components';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import { TopNavigation } from '@cloudscape-design/components';
+
 import styles from './styles.module.scss';
 
 const LazyPreferencesModal = lazy(() => import('../preferences-modal/preferences-modal'));

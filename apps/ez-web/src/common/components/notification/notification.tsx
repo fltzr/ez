@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Flashbar } from '@cloudscape-design/components';
+
 import { useNotificationStore } from '@ez/web-state-management';
 
 export const Notifications = () => {

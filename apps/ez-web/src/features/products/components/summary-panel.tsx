@@ -1,4 +1,3 @@
-import { useWatch } from 'react-hook-form';
 import {
   Button,
   ColumnLayout,
@@ -6,9 +5,11 @@ import {
   ExpandableSection,
   SpaceBetween,
 } from '@cloudscape-design/components';
+import { useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import type { Product } from '../schema/product';
+
 import { KeyValuePair } from '@ez/web-ui';
+import type { Product } from '../schema/product';
 
 const formatPrice = (price: number): string => (price ? `$${price}` : 'N/A');
 

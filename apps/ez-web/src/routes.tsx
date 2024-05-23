@@ -1,4 +1,4 @@
-import { type RouteObject, createBrowserRouter, Navigate } from 'react-router-dom';
+import { Navigate, type RouteObject, createBrowserRouter } from 'react-router-dom';
 
 export const routes: RouteObject[] = [
   {

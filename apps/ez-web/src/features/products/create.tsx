@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Product } from './schema/product';
-import { ProductForms } from './components/forms/product-forms';
-import { AddManufacturerModal } from './components/modals/add-manufacturer-modal';
-import { AddCatalogCategoryModal } from './components/modals/add-catalog-category-modal';
-import { AddProductTypeModal } from './components/modals/add-product-type-modal';
+
 import { useAppLayoutStore } from '@ez/web-state-management';
+import { ProductForms } from './components/forms/product-forms';
+import { AddCatalogCategoryModal } from './components/modals/add-catalog-category-modal';
+import { AddManufacturerModal } from './components/modals/add-manufacturer-modal';
+import { AddProductTypeModal } from './components/modals/add-product-type-modal';
+import type { Product } from './schema/product';
 
 const CreateProductPage = () => {
   const formRef = useRef<{ reset: () => void }>(null);

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   I18nProvider,
   type I18nProviderProps,
   importMessages,
 } from '@cloudscape-design/components/i18n';
-import { router } from '../routes';
+import { RouterProvider } from 'react-router-dom';
+
 import { Loader } from '@ez/web-ui';
+import { router } from '../routes';
 
 const queryClient = new QueryClient();
 

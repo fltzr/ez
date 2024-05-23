@@ -1,16 +1,17 @@
 import { nanoid } from 'nanoid';
 import {
-  type FlashbarProps,
   Box,
   Button,
   ColumnLayout,
   Container,
+  type FlashbarProps,
   Header,
   HelpPanel,
   SpaceBetween,
   SplitPanel,
 } from '@cloudscape-design/components';
-import { Mode as Theme, Density } from '@cloudscape-design/global-styles';
+import { Density, Mode as Theme } from '@cloudscape-design/global-styles';
+
 import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 import { Breadcrumbs } from '@ez/web-ui';
 import { WindfinderWidget } from '../common/components/wind-finder-widget';

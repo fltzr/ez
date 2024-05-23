@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Button, Table } from '@cloudscape-design/components';
-import { nanoid } from 'nanoid';
 import { isAxiosError } from 'axios';
-import { useCourtreserveEventsApi } from './data-access/events-api';
-import { type CourtreserveEvent, courtreserveEventSchema } from './util/types';
-import { eventTableColumnDefinitions } from './util/config';
+import { nanoid } from 'nanoid';
+import { Button, Table } from '@cloudscape-design/components';
+
 import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
+import { useCourtreserveEventsApi } from './data-access/events-api';
+import { eventTableColumnDefinitions } from './util/config';
+import { type CourtreserveEvent, courtreserveEventSchema } from './util/types';
 
 const CourtreserveEventsPage = () => {
   const { setContentLayout } = useAppLayoutStore((s) => ({

@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import { AppLayout } from '@cloudscape-design/components';
+import { Outlet } from 'react-router-dom';
+
 import { useAppLayoutStore } from '@ez/web-state-management';
 import { Navigation } from '@ez/web-ui';
-import { Notifications } from '../notification/notification';
-import { Header } from '../header/header';
 import { useClearNotifications } from '../../hooks/use-clear-notifications';
+import { Header } from '../header/header';
+import { Notifications } from '../notification/notification';
 
 const RootLayout = () => {
   const appLayoutStore = useAppLayoutStore();

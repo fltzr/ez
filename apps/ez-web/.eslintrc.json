@@ -1,11 +1,25 @@
 {
-  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nx/react",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "../../.eslintrc.json"
+  ],
   "ignorePatterns": ["!**/*"],
-  "plugins": [],
+  "plugins": ["import", "@typescript-eslint"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+          }
+        ]
+      }
     }
   ]
 }

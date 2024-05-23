@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react';
 import { Container, Header, Spinner } from '@cloudscape-design/components';
-import React, { useEffect, useState } from 'react';
 
 export const WindfinderWidget = () => {
   const [loading, setLoading] = useState(true);

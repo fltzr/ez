@@ -1,8 +1,9 @@
-import { useFormContext } from 'react-hook-form';
 import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
-import type { Product } from '../../schema/product';
-import { useManufacturerApi } from '../../data-access/manufacturer';
+import { useFormContext } from 'react-hook-form';
+
 import { useAppLayoutStore } from '@ez/web-state-management';
+import { useManufacturerApi } from '../../data-access/manufacturer';
+import type { Product } from '../../schema/product';
 import { CategorySelect } from '../category-select';
 
 type MetaFormPanelProps = {

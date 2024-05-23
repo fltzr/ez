@@ -1,4 +1,4 @@
-import { TableRows, TableRow, WindowPath, TopNavigation } from './common';
+import { TableRow, TableRows, TopNavigation, WindowPath } from './common';
 import styles from './styles.module.scss';
 
 const comfortableImage = (

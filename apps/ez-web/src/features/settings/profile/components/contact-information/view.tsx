@@ -1,7 +1,7 @@
-import ColumnLayout from '@cloudscape-design/components/column-layout';
+import { Box, ColumnLayout } from '@cloudscape-design/components';
 import { useController, useFormContext } from 'react-hook-form';
-import { ContactInformation } from './container';
-import { Box } from '@cloudscape-design/components';
+
+import type { ContactInformation } from './container';
 
 export const ContactInformationView = () => {
   const { getValues, control } = useFormContext<ContactInformation>();

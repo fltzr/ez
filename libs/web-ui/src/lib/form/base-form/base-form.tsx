@@ -7,9 +7,9 @@ import {
   useForm,
   SubmitErrorHandler,
 } from 'react-hook-form';
-import type { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { type FormProps, Form } from '@cloudscape-design/components';
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { z } from 'zod';
 
 type BaseFormProps<TFormValues extends FieldValues> = {
   formId: string;
@@ -51,7 +51,6 @@ export const BaseForm = <TFormValues extends FieldValues>({
         data-testid={testId ? `base-form_${testId}` : 'base-form'}
         onSubmit={(event) => {
           event.preventDefault();
-          event.stopPropagation();
 
           methods.handleSubmit(onSubmit, onError)(event);
         }}
