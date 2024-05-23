@@ -1,10 +1,10 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "react-compiler"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.tsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -51,9 +51,10 @@
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
+      "files": ["*.tsx"],
+      "rules": {
+        "react-compiler/react-compiler": "error"
+      }
     }
   ]
 }
