@@ -22,6 +22,10 @@ const initialItems: TodoItemSchema[] = [
   },
 ];
 
+export const AnotherPage = () => {
+  return <div></div>;
+};
+
 const TodoPage = () => {
   const { addDrawerPanel, removeDrawerPanel } = useAppLayoutStore();
   const [todoItems, setTodoItems] = useLocalStorage<TodoItemSchema[]>({
@@ -48,7 +52,7 @@ const TodoPage = () => {
     return () => {
       removeDrawerPanel(drawerId);
     };
-  }, [addDrawerPanel, removeDrawerPanel, todoItems, setTodoItems]);
+  }, [addDrawerPanel, removeDrawerPanel, setTodoItems, todoItems]);
 
   return (
     <Box padding={{ horizontal: 'm' }}>

@@ -68,8 +68,7 @@ export const SecuritSettingsForm = () => {
     appLayoutStore.setContentLayout('form');
 
     return () => appLayoutStore.setContentLayout('default');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [appLayoutStore]);
 
   return (
     <Form variant='embedded' header={<Header variant='h2'>Security settings</Header>}>

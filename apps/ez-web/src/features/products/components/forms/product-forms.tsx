@@ -12,6 +12,7 @@ import { ProductFormPanel } from './product-form-panel';
 import { MetaFormPanel } from './meta-form-panel';
 import { Breadcrumbs, BaseForm } from '@ez/web-ui';
 import { useAppLayoutStore } from '@ez/web-state-management';
+import { isNativeError } from 'util/types';
 
 type ProductFormProps = {
   formRef: Ref<{ reset: () => void }>;
@@ -36,8 +37,7 @@ export const ProductForms = ({
     return () => {
       setToolsContent(null);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setToolsContent]);
 
   return (
     <BaseForm
@@ -55,6 +55,11 @@ export const ProductForms = ({
         })),
       }))}
       onSubmit={onSubmit}
+      onError={(error) => {
+        if (isNativeError(error)) {
+          console.log('Form errors: ', error);
+        }
+      }}
     >
       <SpaceBetween direction='vertical' size='m'>
         <Breadcrumbs />
