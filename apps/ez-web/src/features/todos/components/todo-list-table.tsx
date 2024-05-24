@@ -6,6 +6,7 @@ import {
   Button,
   type CollectionPreferencesProps,
   Header,
+  Select,
   StatusIndicator,
   Table,
   type TableProps,
@@ -32,14 +33,11 @@ const getStatusText = (status: TodoItemSchema['status']) =>
     ? 'Completed'
     : status === 'in-progress'
       ? 'In progress'
-      : status === 'info' ?? '';
+      : status === 'info'
+        ? 'Attention'
+        : '';
 
 const todoListTableColumnDefinitions: TableProps<Partial<TodoItemSchema>>['columnDefinitions'] = [
-  {
-    id: 'id',
-    header: 'ID',
-    cell: (item) => item.id,
-  },
   {
     id: 'title',
     sortingField: 'title',
@@ -61,6 +59,23 @@ const todoListTableColumnDefinitions: TableProps<Partial<TodoItemSchema>>['colum
         {getStatusText(item.status ?? 'in-progress')}
       </StatusIndicator>
     ),
+    editConfig: {
+      editingCell: (item, ctx) => {
+        return (
+          <Select
+            placeholder='Status'
+            selectedOption={ctx.currentValue}
+            onChange={(event) => {
+              ctx.setValue(event.detail.selectedOption.value);
+            }}
+            options={[
+              { value: 'success', label: 'Completed' },
+              { value: 'in-progress', label: 'In progress' },
+            ]}
+          />
+        );
+      },
+    },
   },
 ];
 

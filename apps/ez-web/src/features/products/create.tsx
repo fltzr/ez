@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import { useAppLayoutStore } from '@ez/web-state-management';
 import { ProductForms } from './components/forms/product-forms';
@@ -15,14 +15,20 @@ const CreateProductPage = () => {
   const [isProductTypeModalOpen, setIsProductTypeModalOpen] = useState(false);
   const [isCatalogCategoryModalOpen, setIsCatalogCategoryModalOpen] = useState(false);
 
-  useEffect(() => {
-    appLayoutStore.setContentLayout('table');
-    appLayoutStore.setNavigationOpen(false);
+  const initialized = useRef(false);
 
-    return () => {
-      appLayoutStore.setContentLayout('default');
-      appLayoutStore.setNavigationOpen(true);
-    };
+  useLayoutEffect(() => {
+    if (!initialized.current) {
+      appLayoutStore.setContentLayout('table');
+      appLayoutStore.setNavigationOpen(false);
+
+      initialized.current = true;
+
+      return () => {
+        appLayoutStore.setContentLayout('default');
+        appLayoutStore.setNavigationOpen(true);
+      };
+    }
   }, [appLayoutStore]);
 
   const handleSubmit = (data: Product) => {
