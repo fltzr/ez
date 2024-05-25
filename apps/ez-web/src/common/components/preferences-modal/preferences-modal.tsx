@@ -1,10 +1,13 @@
-import Box from '@cloudscape-design/components/box';
-import FormField from '@cloudscape-design/components/form-field';
-import Header from '@cloudscape-design/components/header';
-import Modal from '@cloudscape-design/components/modal';
-import Select, { type SelectProps } from '@cloudscape-design/components/select';
-import SpaceBetween from '@cloudscape-design/components/space-between';
-import Tiles from '@cloudscape-design/components/tiles';
+import type { SelectProps } from '@cloudscape-design/components';
+import {
+  Box,
+  FormField,
+  Header,
+  Modal,
+  Select,
+  SpaceBetween,
+  Tiles,
+} from '@cloudscape-design/components';
 import { Density, Mode as Theme } from '@cloudscape-design/global-styles';
 
 import { useAppLayoutStore } from '@ez/web-state-management';
