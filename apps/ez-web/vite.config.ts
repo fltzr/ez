@@ -16,7 +16,6 @@ export default defineConfig({
   preview: {
     port: 4100,
     host: '0.0.0.0',
-    
   },
 
   plugins: [
@@ -28,13 +27,9 @@ export default defineConfig({
     nxViteTsPaths(),
   ],
 
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-
   build: {
     outDir: '../../dist/ez-web',
+    emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
