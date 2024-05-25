@@ -1,5 +1,4 @@
-import { Box } from '@cloudscape-design/components';
-import ColumnLayout from '@cloudscape-design/components/column-layout';
+import { Box, ColumnLayout } from '@cloudscape-design/components';
 import { useFormContext } from 'react-hook-form';
 
 import { FormInput } from '@ez/web-ui';
