@@ -1,10 +1,11 @@
 'https://chat.openai.com/share/77596c70-79fb-47a4-a798-5f0801ddf09a';
-import { z } from 'zod';
-import { FormProvider, useForm } from 'react-hook-form';
-import { FormInput } from './form-input';
-import { render, act, fireEvent, screen, waitFor } from '@testing-library/react';
-import createWrapper from '@cloudscape-design/components/test-utils/dom';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { render, act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { z } from 'zod';
+import createWrapper from '@cloudscape-design/components/test-utils/dom';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { FormInput } from './form-input';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required.'),
