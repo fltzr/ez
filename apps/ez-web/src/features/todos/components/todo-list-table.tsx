@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { isEmpty } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { z } from 'zod';
 import { useCollection } from '@cloudscape-design/collection-hooks';
 import {
   Button,
+  ButtonDropdown,
   type CollectionPreferencesProps,
   Header,
-  Select,
+  SpaceBetween,
   StatusIndicator,
   Table,
   type TableProps,
@@ -59,23 +61,6 @@ const todoListTableColumnDefinitions: TableProps<Partial<TodoItemSchema>>['colum
         {getStatusText(item.status ?? 'in-progress')}
       </StatusIndicator>
     ),
-    editConfig: {
-      editingCell: (item, ctx) => {
-        return (
-          <Select
-            placeholder='Status'
-            selectedOption={ctx.currentValue}
-            onChange={(event) => {
-              ctx.setValue(event.detail.selectedOption.value);
-            }}
-            options={[
-              { value: 'success', label: 'Completed' },
-              { value: 'in-progress', label: 'In progress' },
-            ]}
-          />
-        );
-      },
-    },
   },
 ];
 
@@ -127,7 +112,37 @@ export const TodoListTable = ({ items }: TodoListTableProps) => {
       contentDensity={preferences.contentDensity}
       stickyColumns={preferences.stickyColumns}
       header={
-        <Header variant='h2' actions={<Button variant='primary'>Add todo item</Button>}>
+        <Header
+          variant='h2'
+          actions={
+            <SpaceBetween direction='horizontal' size='s'>
+              <ButtonDropdown
+                disabled={selectedTodoItems.length !== 1}
+                items={[
+                  {
+                    id: 'mark-completed',
+                    text: 'Mark completed',
+                    disabled: selectedTodoItems[0]?.status === 'success',
+                  },
+                  {
+                    id: 'mark-in-progress',
+                    text: 'Mark in-progress',
+                    disabled: selectedTodoItems[0]?.status === 'in-progress',
+                  },
+                ]}
+                onItemClick={(event) => {
+                  switch (event.detail.id) {
+                    case 'mark-completed':
+                      break;
+                  }
+                }}
+              >
+                Mark status
+              </ButtonDropdown>
+              <Button disabled={isEmpty(selectedTodoItems)}>Delete</Button>
+            </SpaceBetween>
+          }
+        >
           Todo items
         </Header>
       }

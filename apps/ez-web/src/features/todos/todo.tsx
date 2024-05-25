@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Box, SpaceBetween } from '@cloudscape-design/components';
 
-import { useAppLayoutStore } from '@ez/web-state-management';
+import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 import { Breadcrumbs } from '@ez/web-ui';
 import { CreateTodoItemPanel } from './components/create-todo-item-panel';
 import type { TodoItemSchema } from './components/todo-list-table';
@@ -30,6 +30,7 @@ export const AnotherPage = () => {
 
 const TodoPage = () => {
   const { addDrawerPanel, removeDrawerPanel } = useAppLayoutStore();
+  const { addNotification } = useNotificationStore();
   const [todoItems, setTodoItems] = useLocalStorage<TodoItemSchema[]>({
     localstorageKey: 'internal__todo-item-schema',
     initialValue: initialItems,
@@ -39,7 +40,18 @@ const TodoPage = () => {
     const drawerId = 'drawer__create-todo-item';
     addDrawerPanel({
       id: drawerId,
-      content: <CreateTodoItemPanel onSave={(newItem) => setTodoItems([...todoItems, newItem])} />,
+      content: (
+        <CreateTodoItemPanel
+          onSave={(newItem) => {
+            setTodoItems([...todoItems, newItem]);
+            addNotification({
+              id: nanoid(5),
+              header: `Added todo item with ID ${newItem.id}`,
+              dismissible: true,
+            });
+          }}
+        />
+      ),
       badge: true,
       trigger: { iconName: 'add-plus' },
       resizable: true,
@@ -54,7 +66,7 @@ const TodoPage = () => {
     return () => {
       removeDrawerPanel(drawerId);
     };
-  }, [addDrawerPanel, removeDrawerPanel, setTodoItems, todoItems]);
+  }, [addDrawerPanel, addNotification, removeDrawerPanel, setTodoItems, todoItems]);
 
   return (
     <Box padding={{ horizontal: 'm' }}>
