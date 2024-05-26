@@ -13,7 +13,7 @@ export const CreateTodoItemPanel = ({ onSave }: CreateTodoItemPanelProps) => {
   const formRef = useRef<{ reset: () => void }>(null);
 
   const handleOnSave = (data: TodoItemSchema) => {
-    console.log(data);
+    console.log(`Saving todo item: ${JSON.stringify(data, null, 2)}`);
     onSave(data);
     formRef.current?.reset();
   };
