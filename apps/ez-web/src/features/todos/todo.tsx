@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import { DateTime } from 'luxon';
 import { nanoid } from 'nanoid';
 import { Box, SpaceBetween } from '@cloudscape-design/components';
+import { useEffectOnce } from 'react-use';
 
 import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 import { Breadcrumbs } from '@ez/web-ui';
@@ -15,26 +17,33 @@ const initialItems: TodoItemSchema[] = [
     title: 'In-progress todo task',
     description: 'In-progress todo task description',
     status: 'in-progress',
+    dueDate: DateTime.now().toFormat('yyyy-MM-dd'),
   },
   {
     id: nanoid(5),
     title: 'Completed todo task',
     description: 'Completed todo task description',
     status: 'success',
+    dueDate: DateTime.now().toFormat('yyyy-MM-dd'),
   },
 ];
 
-export const AnotherPage = () => {
-  return <div></div>;
-};
-
 const TodoPage = () => {
-  const { addDrawerPanel, removeDrawerPanel } = useAppLayoutStore();
+  const { setContentLayout, addDrawerPanel, removeDrawerPanel } = useAppLayoutStore();
   const { addNotification } = useNotificationStore();
   const [todoItems, setTodoItems] = useLocalStorage<TodoItemSchema[]>({
     localstorageKey: 'internal__todo-item-schema',
     initialValue: initialItems,
   });
+
+  const handleUpdateTodo = (data: Partial<TodoItemSchema>) => {
+    const item = todoItems.find((item) => item.id === data.id);
+    if (!item) return;
+
+    console.log('Updating todo item:', { ...item, ...data });
+
+    setTodoItems(todoItems.map((item) => (item.id === data.id ? { ...item, ...data } : item)));
+  };
 
   useEffect(() => {
     const drawerId = 'drawer__create-todo-item';
@@ -68,11 +77,19 @@ const TodoPage = () => {
     };
   }, [addDrawerPanel, addNotification, removeDrawerPanel, setTodoItems, todoItems]);
 
+  useEffectOnce(() => {
+    setContentLayout('table');
+
+    return () => {
+      setContentLayout('default');
+    };
+  });
+
   return (
     <Box padding={{ horizontal: 'm' }}>
       <SpaceBetween direction='vertical' size='m'>
         <Breadcrumbs />
-        <TodoListTable items={todoItems as readonly TodoItemSchema[]} />
+        <TodoListTable items={todoItems as readonly TodoItemSchema[]} onSave={handleUpdateTodo} />
       </SpaceBetween>
     </Box>
   );
