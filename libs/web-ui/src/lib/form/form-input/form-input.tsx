@@ -1,10 +1,10 @@
-import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 import {
   type FormFieldProps,
   type InputProps,
   FormField,
   Input,
 } from '@cloudscape-design/components';
+import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
 type FormInputProps<T extends FieldValues> = Omit<InputProps, 'name' | 'value'> &
   Omit<FormFieldProps, 'errorText'> &
@@ -27,11 +27,7 @@ export const FormInput = <T extends FieldValues>({
   } = useController<T>({ name, control, rules });
 
   const handleOnChange: InputProps['onChange'] = (event) => {
-    if (field.onChange) {
-      field.onChange(event.detail.value);
-    } else {
-      console.log('onChange is undefined.');
-    }
+    field.onChange(event.detail.value);
   };
 
   return (

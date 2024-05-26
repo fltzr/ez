@@ -1,10 +1,10 @@
-import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 import {
   type FormFieldProps,
   type MultiselectProps,
   FormField,
   Multiselect,
 } from '@cloudscape-design/components';
+import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
 type FormMultiselectProps<T extends FieldValues> = Omit<
   MultiselectProps,
