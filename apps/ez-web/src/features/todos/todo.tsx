@@ -7,8 +7,8 @@ import { useEffectOnce } from 'react-use';
 import { useAppLayoutStore, useNotificationStore } from '@ez/web-state-management';
 import { Breadcrumbs } from '@ez/web-ui';
 import { CreateTodoItemPanel } from './components/create-todo-item-panel';
-import type { TodoItemSchema } from './components/todo-list-table';
-import { TodoListTable } from './components/todo-list-table';
+import { TodoListTable } from './components/todo-list-table/todo-list-table';
+import type { TodoItemSchema } from './schema';
 import { useLocalStorage } from '../../common/hooks/use-local-storage';
 
 const initialItems: TodoItemSchema[] = [
@@ -37,12 +37,24 @@ const TodoPage = () => {
   });
 
   const handleUpdateTodo = (data: Partial<TodoItemSchema>) => {
-    const item = todoItems.find((item) => item.id === data.id);
-    if (!item) return;
+    if (!data.id) {
+      console.error('Cannot update todo item without an ID:', data);
+      return;
+    }
 
-    console.log('Updating todo item:', { ...item, ...data });
+    const index = todoItems.findIndex((item) => item.id === data.id);
 
-    setTodoItems(todoItems.map((item) => (item.id === data.id ? { ...item, ...data } : item)));
+    if (index === -1) {
+      console.error('No matching item found to update.');
+      return;
+    }
+
+    const updateItem = { ...todoItems[index], ...data };
+    console.log('Updating todo item:', updateItem);
+
+    const updatedItems = [...todoItems];
+    updatedItems[index] = updateItem;
+    setTodoItems(updatedItems);
   };
 
   useEffect(() => {

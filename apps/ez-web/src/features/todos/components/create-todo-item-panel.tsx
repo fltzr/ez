@@ -3,7 +3,8 @@ import { Drawer } from '@cloudscape-design/components';
 
 import { BaseForm } from '@ez/web-ui';
 import { CreateTodoItemContent } from './create-todo-item-content';
-import { type TodoItemSchema, todoItemSchema } from './todo-list-table';
+import type { TodoItemSchema } from '../schema';
+import { todoItemSchema } from '../schema';
 
 type CreateTodoItemPanelProps = {
   onSave: (newItem: TodoItemSchema) => void;

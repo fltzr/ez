@@ -3,7 +3,7 @@ import { Box, Button, SpaceBetween } from '@cloudscape-design/components';
 import { useFormContext } from 'react-hook-form';
 
 import { FormDatePicker, FormInput } from '@ez/web-ui';
-import type { TodoItemSchema } from './todo-list-table';
+import type { TodoItemSchema } from '../schema';
 
 export const CreateTodoItemContent = () => {
   const { control } = useFormContext<TodoItemSchema>();
