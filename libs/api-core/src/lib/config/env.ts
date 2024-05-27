@@ -10,7 +10,7 @@ if (!isProduction) {
 }
 
 export const env = cleanEnv(process.env, {
-  // General configuration
+  /* General configuration */
   NODE_ENV: str({
     choices: ['development', 'test', 'production'],
     default: 'production',
@@ -28,4 +28,10 @@ export const env = cleanEnv(process.env, {
     devDefault: 'dev',
   }),
   LOG_DIR: str({ devDefault: 'logs' }),
+  /* END general configuration */
+
+  /* Database configuration */
+  SUPABASE_URL: url(),
+  SUPABASE_KEY: str(),
+  /* END database configuration */
 });

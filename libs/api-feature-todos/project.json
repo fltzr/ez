@@ -1,0 +1,9 @@
+{
+  "name": "api-feature-todos",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api-feature-todos/src",
+  "projectType": "library",
+  "tags": ["scope:api", "type:core"],
+  "// targets": "to see all targets run: nx show project api-feature-todos --web",
+  "targets": {}
+}

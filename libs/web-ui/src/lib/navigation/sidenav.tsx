@@ -1,7 +1,12 @@
+import type { SideNavigationProps } from '@cloudscape-design/components';
 import { SideNavigation } from '@cloudscape-design/components';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const Navigation = () => {
+type NavigationProps = {
+  items: SideNavigationProps['items'];
+};
+
+export const Navigation = ({ items }: NavigationProps) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -9,58 +14,11 @@ export const Navigation = () => {
   return (
     <SideNavigation
       activeHref={location.pathname}
-      items={[
-        {
-          type: 'link',
-          text: 'Dashboard',
-          href: '/',
-        },
-        {
-          type: 'section',
-          text: 'Courtreserve',
-          items: [
-            {
-              type: 'link',
-              text: 'Events',
-              href: '/courtreserve/events',
-            },
-          ],
-        },
-        {
-          type: 'section',
-          text: 'Products',
-          items: [
-            {
-              type: 'link',
-              text: 'Create',
-              href: '/products/create',
-            },
-          ],
-        },
-        {
-          type: 'expandable-link-group',
-          text: 'Todos',
-          href: '/todos',
-          items: [],
-        },
-        { type: 'divider' },
-        {
-          type: 'section',
-          text: 'Settings',
-          items: [
-            {
-              type: 'link',
-              text: 'Profile',
-              href: '/settings/profile',
-            },
-            {
-              type: 'link',
-              text: 'Security',
-              href: '/settings/security',
-            },
-          ],
-        },
-      ]}
+      header={{
+        text: '',
+        href: '/',
+      }}
+      items={items}
       onFollow={(e) => {
         e.preventDefault();
         navigate(e.detail.href, { replace: true });
