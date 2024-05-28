@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import {
   I18nProvider,
   type I18nProviderProps,
@@ -8,9 +8,8 @@ import {
 import { RouterProvider } from 'react-router-dom';
 
 import { Loader } from '@ez/web-ui';
+import { queryClient } from '../common/utils/query-client';
 import { router } from '../routes';
-
-const queryClient = new QueryClient();
 
 export const Providers = () => {
   const locale = document.documentElement.lang || 'en';

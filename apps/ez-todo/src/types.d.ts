@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import '@tanstack/react-query';
+import type { QueryKey } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 
 declare global {
@@ -12,6 +13,10 @@ declare global {
 declare module '@tanstack/react-query' {
   interface Register {
     defaultError: AxiosError;
+    mutationMeta: {
+      invalidates?: Array<QueryKey>;
+      operation?: 'INSERT' | 'UPDATE' | 'DELETE';
+    };
   }
 }
 

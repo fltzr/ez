@@ -1,7 +1,14 @@
 import { toNumber } from 'lodash-es';
 import { DateTime } from 'luxon';
 import type { BoxProps, TableProps } from '@cloudscape-design/components';
-import { Box, DatePicker, Input, StatusIndicator, Textarea } from '@cloudscape-design/components';
+import {
+  Box,
+  DatePicker,
+  Input,
+  Select,
+  StatusIndicator,
+  Textarea,
+} from '@cloudscape-design/components';
 
 import type { TodoItemSchema } from '../../schema';
 
@@ -38,9 +45,23 @@ export const baseTodoListTableColumnDefinitions: TableProps<
     id: 'dueDate',
     sortingField: 'dueDate',
     header: 'Due date',
+    minWidth: 270,
     cell: (item) => {
       const status = getStatusColor(item.dueDate);
       return <Box color={status}>{item.dueDate === '' ? '—' : item.dueDate}</Box>;
+    },
+  },
+  {
+    id: 'urgency',
+    sortingField: 'urgency',
+    header: 'Urgency',
+    cell: (item) => {
+      const urgency = item.urgency ?? 1;
+      return (
+        <Box color='text-label'>
+          {urgency === 1 ? '❗️' : urgency === 2 ? '❗️❗️' : urgency === 3 ? '❗️❗️❗️' : '—'}
+        </Box>
+      );
     },
   },
   {
@@ -109,6 +130,29 @@ const editableTodoListColumns: ColumnEditConfig = {
         }}
       />
     ),
+  },
+  urgency: {
+    editingCell: (item, ctx) => {
+      const options = [
+        { value: '1', label: 'Low' },
+        { value: '2', label: 'Medium' },
+        { value: '3', label: 'High' },
+      ];
+
+      return (
+        <Select
+          selectedOption={
+            options.find(
+              (option) => option.value === (ctx.currentValue ?? item.urgency?.toString())
+            ) ?? options[0]
+          }
+          options={options}
+          onChange={(event) => {
+            ctx.setValue(event.detail.selectedOption.value);
+          }}
+        />
+      );
+    },
   },
 };
 

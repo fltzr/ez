@@ -7,7 +7,7 @@ import type { TodoItemSchema } from '../schema';
 import { todoItemSchema } from '../schema';
 
 type CreateTodoItemPanelProps = {
-  onSave: (newItem: TodoItemSchema) => void;
+  onSave: (newItem: Omit<TodoItemSchema, 'id'>) => void;
 };
 
 export const CreateTodoItemPanel = ({ onSave }: CreateTodoItemPanelProps) => {
