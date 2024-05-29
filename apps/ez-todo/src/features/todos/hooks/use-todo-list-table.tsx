@@ -22,7 +22,6 @@ const todoSortComparator = (a: TodoItemSchema, b: TodoItemSchema) => {
 };
 
 const useTodoListTable = (items: readonly TodoItemSchema[]) => {
-  const [orderedTodoItems, setOrderedTodoItems] = useState<TodoItemSchema[] | null>(null);
   const [selectedTodoItems, setSelectedTodoItems] = useState<TodoItemSchema[]>([]);
   const [isSortingEnabled, setIsSortingEnabled] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -34,12 +33,6 @@ const useTodoListTable = (items: readonly TodoItemSchema[]) => {
       wrapLines: true,
     },
   });
-
-  const updateOrderedTodoItems = (updatedItem: TodoItemSchema) => {
-    setOrderedTodoItems((prev) =>
-      prev?.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
-  };
 
   const {
     items: todoItems,

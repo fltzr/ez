@@ -1,6 +1,5 @@
 import { toNumber } from 'lodash-es';
-import { DateTime } from 'luxon';
-import type { BoxProps, TableProps } from '@cloudscape-design/components';
+import type { CollectionPreferencesProps, TableProps } from '@cloudscape-design/components';
 import {
   Box,
   DatePicker,
@@ -10,32 +9,11 @@ import {
   Textarea,
 } from '@cloudscape-design/components';
 
+import { getStatusColor, getStatusText } from './utils';
 import type { TodoItemSchema } from '../../schema';
 
-const getStatusText = (status: TodoItemSchema['status']) =>
-  status === 'success'
-    ? 'Completed'
-    : status === 'in-progress'
-      ? 'In progress'
-      : status === 'info'
-        ? 'Attention'
-        : '';
-
-const getStatusColor = (date: string | undefined): BoxProps['color'] => {
-  if (date === '' || typeof date === 'undefined') {
-    return 'text-status-inactive';
-  }
-
-  const today = DateTime.local().startOf('day');
-  const dateToCheck = DateTime.fromFormat(date, 'yyyy-MM-dd');
-
-  if (dateToCheck < today) {
-    return 'text-status-error';
-  } else if (dateToCheck.equals(today)) {
-    return 'text-status-warning';
-  } else {
-    return 'text-label';
-  }
+export const defaultTodoListTablePreferences: CollectionPreferencesProps.Preferences = {
+  pageSize: 30,
 };
 
 export const baseTodoListTableColumnDefinitions: TableProps<
@@ -45,7 +23,7 @@ export const baseTodoListTableColumnDefinitions: TableProps<
     id: 'dueDate',
     sortingField: 'dueDate',
     header: 'Due date',
-    minWidth: 270,
+    minWidth: 220,
     cell: (item) => {
       const status = getStatusColor(item.dueDate);
       return <Box color={status}>{item.dueDate === '' ? '—' : item.dueDate}</Box>;
