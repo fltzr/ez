@@ -29,6 +29,10 @@ export const routes: RouteObject[] = [
     path: 'signin',
     lazy: () => import('./features/auth/sign-in/sign-in'),
   },
+  {
+    path: 'signup',
+    lazy: () => import('./features/auth/sign-up/sign-up'),
+  },
 ];
 
 export const router = createBrowserRouter(routes);

@@ -22,7 +22,6 @@ const TodoListTable = ({ items, isLoading, isError }: TodoListTableProps) => {
     setSelectedTodoItems,
     collectionProps,
     isStatusDropdownDisabled,
-    setIsSortingEnabled,
   } = useTodoListTable(items);
 
   return (
@@ -41,22 +40,16 @@ const TodoListTable = ({ items, isLoading, isError }: TodoListTableProps) => {
           setSelectedTodoItems={setSelectedTodoItems}
           isStatusDropdownDisabled={isStatusDropdownDisabled}
           onSave={async (data) => {
-            setIsSortingEnabled(false); // Disable sorting
             await updateTodoItem.mutateAsync(data);
-            setIsSortingEnabled(true); // Re-enable sorting
           }}
           onDelete={async (id) => {
-            setIsSortingEnabled(false); // Disable sorting
             await deleteTodoItem.mutateAsync(id);
-            setIsSortingEnabled(true); // Re-enable sorting
           }}
           onArchive={(id) => console.log('Archive', id)}
         />
       }
       submitEdit={async (item, column, newValue) => {
-        setIsSortingEnabled(false); // Disable sorting
         await updateTodoItem.mutateAsync({ ...item, [column.id as string]: newValue });
-        setIsSortingEnabled(true); // Re-enable sorting
       }}
       onSelectionChange={(event) => setSelectedTodoItems(event.detail.selectedItems)}
     />

@@ -1,8 +1,9 @@
+import { Suspense } from 'react';
 import { AppLayout } from '@cloudscape-design/components';
 import { Outlet } from 'react-router-dom';
 
 import { useAppLayoutStore } from '@ez/web-state-management';
-import { Navigation } from '@ez/web-ui';
+import { CenterContainer, Loader, Navigation } from '@ez/web-ui';
 import { useClearNotifications } from '../../hooks/use-clear-notifications';
 import { Header } from '../header/header';
 import { Notifications } from '../notification/notification';
@@ -13,7 +14,13 @@ const RootLayout = () => {
   useClearNotifications();
 
   return (
-    <>
+    <Suspense
+      fallback={
+        <CenterContainer>
+          <Loader />
+        </CenterContainer>
+      }
+    >
       <Header />
       <AppLayout
         stickyNotifications
@@ -43,7 +50,17 @@ const RootLayout = () => {
         splitPanel={appLayoutStore.splitPanelContent}
         splitPanelOpen={appLayoutStore.isSplitPanelOpen}
         notifications={<Notifications />}
-        content={<Outlet />}
+        content={
+          <Suspense
+            fallback={
+              <CenterContainer>
+                <Loader />
+              </CenterContainer>
+            }
+          >
+            <Outlet />
+          </Suspense>
+        }
         onNavigationChange={({ detail: { open } }) => {
           appLayoutStore.setNavigationOpen(open);
         }}
@@ -55,7 +72,7 @@ const RootLayout = () => {
         }}
         drawers={appLayoutStore.drawerPanels}
       />
-    </>
+    </Suspense>
   );
 };
 

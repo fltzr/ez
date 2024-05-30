@@ -1,15 +1,15 @@
-import { type ReactNode, type Ref, useImperativeHandle } from 'react';
+import { type ReactNode, type Ref, useImperativeHandle, useRef } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { z } from 'zod';
+import { type FormProps, Form } from '@cloudscape-design/components';
 import {
   type FieldValues,
   type SubmitHandler,
   type DefaultValues,
   FormProvider,
   useForm,
-  SubmitErrorHandler,
 } from 'react-hook-form';
-import { type FormProps, Form } from '@cloudscape-design/components';
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { z } from 'zod';
+import type { SubmitErrorHandler } from 'react-hook-form';
 
 type BaseFormProps<TFormValues extends FieldValues> = {
   formId: string;
@@ -33,9 +33,12 @@ export const BaseForm = <TFormValues extends FieldValues>({
   formRef,
   ...formProps
 }: BaseFormProps<TFormValues>) => {
+  const hasSubmittedOnce = useRef(false);
+
   const methods = useForm<TFormValues>({
     resolver: zodResolver(zodSchema),
     defaultValues,
+    mode: hasSubmittedOnce.current ? 'onChange' : 'onSubmit',
   });
 
   useImperativeHandle(formRef, () => ({
@@ -51,7 +54,7 @@ export const BaseForm = <TFormValues extends FieldValues>({
         data-testid={testId ? `base-form_${testId}` : 'base-form'}
         onSubmit={(event) => {
           event.preventDefault();
-
+          hasSubmittedOnce.current = true;
           methods.handleSubmit(onSubmit, onError)(event);
         }}
       >

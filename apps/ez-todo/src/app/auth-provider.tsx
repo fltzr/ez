@@ -9,21 +9,14 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     console.log('AuthProvider: useEffect');
-    const setAuth = async () => {
-      const { data, error } = await supabase.auth.getUser();
-
-      if (error) {
-        console.error('Error getting user:', error.message);
-        setUser(null);
-        return;
-      }
-
-      setUser(data.user);
-    };
-
-    setAuth();
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log(`AuthProvider: onAuthStateChange: event=${event}`);
+
+      if (event === 'SIGNED_OUT') {
+        setUser(null);
+      }
+
       setUser(session?.user ?? null);
     });
 

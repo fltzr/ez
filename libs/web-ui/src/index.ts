@@ -1,4 +1,5 @@
 export * from './lib/breadcrumbs/breadcrumbs';
+export * from './lib/center-container/center-container';
 export * from './lib/form/base-form/base-form';
 export * from './lib/form/form-date-picker/form-date-picker';
 export * from './lib/form/form-multiselect/form-multiselect';

@@ -23,7 +23,6 @@ const todoSortComparator = (a: TodoItemSchema, b: TodoItemSchema) => {
 
 const useTodoListTable = (items: readonly TodoItemSchema[]) => {
   const [selectedTodoItems, setSelectedTodoItems] = useState<TodoItemSchema[]>([]);
-  const [isSortingEnabled, setIsSortingEnabled] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [preferences, _setPreferences] = useLocalStorage<CollectionPreferencesProps.Preferences>({
     localstorageKey: 'React-Todo-Items-Table-Preferences',
@@ -44,16 +43,14 @@ const useTodoListTable = (items: readonly TodoItemSchema[]) => {
       noMatch: <TableNoMatchState onClearFilter={() => actions.setFiltering('')} />,
     },
     pagination: { pageSize: 30 },
-    sorting: isSortingEnabled
-      ? {
-          defaultState: {
-            sortingColumn: {
-              sortingField: todoListTableColumnDefinitions[0].id,
-              sortingComparator: todoSortComparator,
-            },
-          },
-        }
-      : undefined,
+    sorting: {
+      defaultState: {
+        sortingColumn: {
+          sortingField: todoListTableColumnDefinitions[0].id,
+          sortingComparator: todoSortComparator,
+        },
+      },
+    },
     selection: {},
   });
 
@@ -71,7 +68,6 @@ const useTodoListTable = (items: readonly TodoItemSchema[]) => {
     collectionProps,
     actions,
     isStatusDropdownDisabled,
-    setIsSortingEnabled, // Return the function to control sorting
   };
 };
 

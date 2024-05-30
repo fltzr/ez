@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 import type { ButtonDropdownProps } from '@cloudscape-design/components';
 import { SpaceBetween, ButtonDropdown, Link } from '@cloudscape-design/components';
 
+import { CenterContainer } from '@ez/web-ui';
 import styles from './styles.module.scss';
 
 const LOCALE_OPTIONS: ButtonDropdownProps['items'] = [
@@ -12,7 +13,7 @@ const LOCALE_OPTIONS: ButtonDropdownProps['items'] = [
 
 export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className={styles.container}>
+    <CenterContainer>
       <div className={styles.content}>
         <SpaceBetween size='s'>
           {children}
@@ -28,6 +29,6 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
           </footer>
         </SpaceBetween>
       </div>
-    </div>
+    </CenterContainer>
   );
 };
