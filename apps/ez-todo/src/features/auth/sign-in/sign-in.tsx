@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
 
 import { SignInForm } from './form';
+import { Notifications } from '../../../common/components/notification/notification';
 import { useAuthStore } from '../../../store/use-auth-store';
 import { BaseLayout } from '../components/base-layout/base-layout';
 
@@ -26,7 +27,7 @@ const SignInHeader = () => (
 
 const SignInFormActions = () => {
   const navigate = useNavigate();
-  const signInMutationState = useIsMutating({ mutationKey: ['mutation_sign-in'], exact: true });
+  const signInMutationState = useIsMutating({ mutationKey: ['mutation__sign-in'], exact: true });
 
   return (
     <Box float='right'>
@@ -68,6 +69,7 @@ const SignIn = () => {
 
   return (
     <BaseLayout>
+      <Notifications />
       <Container
         fitHeight
         media={{

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import type { AuthError } from '@supabase/supabase-js';
-import { date, z } from 'zod';
+import { z } from 'zod';
 import { Box, ColumnLayout, SpaceBetween } from '@cloudscape-design/components';
 
 import { BaseForm, FormDatePicker, FormInput } from '@ez/web-ui';
@@ -10,19 +10,22 @@ const signUpSchema = z
   .object({
     firstName: z.string({ message: 'What is your first name?' }).min(2),
     lastName: z.string({ message: 'What is your last name?' }).min(2),
-    dateOfBirth: z.string().date('A valid date of birth is required.'),
+    dateOfBirth: z.coerce.date({ message: 'A valid date of birth is required.' }).refine(
+      (date) => {
+        return !isNaN(date.getTime()) && date < new Date('2003-01-01');
+      },
+      { message: 'You must be at least 18 years old to register.' }
+    ),
 
     email: z.string().email({ message: 'A valid email address is required.' }),
-    password: z.string().min(6, { message: 'Password must be at least 6 characters long.' }),
+    password: z
+      .string({ message: 'A password is required.' })
+      .min(6, { message: 'Password must be at least 6 characters long.' }),
     confirmPassword: z.string().min(6, { message: 'Password must be at least 6 characters long.' }),
   })
-  .refine((data) => data.password === data.confirmPassword, { message: 'Passwords do not match.' })
-  .refine(
-    (data) => data.dateOfBirth && date().parse(data.dateOfBirth) < date().parse('2003-01-01'),
-    { message: 'You must be at least 18 years old to sign up.' }
-  );
+  .refine((data) => data.password === data.confirmPassword, { message: 'Passwords do not match.' });
 
-type SignUpSchema = z.infer<typeof signUpSchema>;
+export type SignUpSchema = z.infer<typeof signUpSchema>;
 
 type SignUpFormProps = {
   onSuccessfulSignIn?: () => void;
@@ -57,8 +60,8 @@ export const SignUpForm = ({ onSuccessfulSignIn, onServerError }: SignUpFormProp
       onError={(error) => console.log(`onError: ${JSON.stringify(error, null, 2)}`)}
     >
       <ColumnLayout columns={2}>
-        <FormInput name='firstName' label='First name' />
-        <FormInput name='lastName' label='Last name' />
+        <FormInput name='firstName' label='First name' placeholder='Enter your first name' />
+        <FormInput name='lastName' label='Last name' placeholder='Enter your last name' />
       </ColumnLayout>
       <Box margin={{ top: 'm' }}>
         <SpaceBetween direction='vertical' size='m'>
@@ -68,9 +71,16 @@ export const SignUpForm = ({ onSuccessfulSignIn, onServerError }: SignUpFormProp
             placeholder='YYYY-MM-DD'
             constraintText='Use YYYY-MM-DD format.'
           />
-          <FormInput name='email' placeholder='example@email.com' />
-          <FormInput name='password' />
-          <FormInput name='confirmPassword' />
+          <FormInput name='email' label='Email' placeholder='example@email.com' />
+          <ColumnLayout columns={2}>
+            <FormInput sensitive name='password' label='Password' placeholder='Password' />
+            <FormInput
+              sensitive
+              name='confirmPassword'
+              label='Confirm Password'
+              placeholder='Confirm password'
+            />
+          </ColumnLayout>
         </SpaceBetween>
       </Box>
     </BaseForm>

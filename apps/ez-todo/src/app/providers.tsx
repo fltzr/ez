@@ -9,10 +9,12 @@ import { queryClient } from '../common/utils/query-client';
 import { router } from '../routes';
 
 export const Providers = () => {
+  const locale = document.documentElement.lang;
+
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <I18nProvider locale={'en-US'} messages={[messages]}>
+        <I18nProvider locale={locale} messages={[messages]}>
           <RouterProvider
             router={router}
             fallbackElement={

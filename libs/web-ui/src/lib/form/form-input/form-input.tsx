@@ -40,19 +40,6 @@ export const FormInput = <T extends FieldValues>({
       info={props.info}
       description={props.description}
       constraintText={props.constraintText}
-      secondaryControl={
-        sensitive ? (
-          <Button
-            formAction='none'
-            data-testid={testId ? `${testId}_form-input-toggle` : 'form-input-toggle'}
-            variant='icon'
-            iconName={isInputVisible ? 'lock-private' : 'unlocked'}
-            onClick={() => setIsInputVisible((prev) => !prev)}
-          />
-        ) : (
-          props.secondaryControl
-        )
-      }
       errorText={error?.message}
     >
       <Input
@@ -66,6 +53,17 @@ export const FormInput = <T extends FieldValues>({
         }
         onChange={handleOnChange}
       />
+      {sensitive ? (
+        <Button
+          formAction='none'
+          data-testid={testId ? `${testId}_form-input-toggle` : 'form-input-toggle'}
+          variant='icon'
+          iconName={isInputVisible ? 'lock-private' : 'unlocked'}
+          onClick={() => setIsInputVisible((prev) => !prev)}
+        />
+      ) : (
+        props.secondaryControl
+      )}
     </FormField>
   );
 };

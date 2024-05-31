@@ -26,7 +26,15 @@ export const FormDatePicker = <T extends FieldValues>({
   };
 
   return (
-    <FormField {...props} errorText={error?.message}>
+    <FormField
+      label={props.label}
+      info={props.info}
+      description={props.description}
+      constraintText={props.constraintText}
+      stretch={props.stretch}
+      secondaryControl={props.secondaryControl}
+      errorText={error?.message}
+    >
       <DatePicker
         data-testid={testId ? `${testId}_${name}-form-date-picker` : 'form-date-picker'}
         placeholder='YYYY-MM-DD'
