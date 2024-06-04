@@ -40,6 +40,11 @@ const RootLayout = () => {
                 text: 'Todos',
                 href: '/todos',
               },
+              {
+                type: 'link',
+                text: 'Chat',
+                href: '/chat',
+              },
             ]}
           />
         }

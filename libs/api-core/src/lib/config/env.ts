@@ -31,7 +31,6 @@ export const env = cleanEnv(process.env, {
   /* END general configuration */
 
   /* Database configuration */
-  SUPABASE_URL: url(),
-  SUPABASE_KEY: str(),
+  DATABASE_URL: url(),
   /* END database configuration */
 });

@@ -234,6 +234,26 @@ const Home = () => {
           <NotificationActions />
         </Container>
       </ColumnLayout>
+      <ColumnLayout columns={1}>
+        <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
+          <NotificationActions />
+        </Container>
+      </ColumnLayout>
+      <ColumnLayout columns={1}>
+        <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
+          <NotificationActions />
+        </Container>
+      </ColumnLayout>
+      <ColumnLayout columns={1}>
+        <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
+          <NotificationActions />
+        </Container>
+      </ColumnLayout>
+      <ColumnLayout columns={1}>
+        <Container fitHeight header={<Header variant='h2'>Notification actions</Header>}>
+          <NotificationActions />
+        </Container>
+      </ColumnLayout>
     </SpaceBetween>
   );
 };

@@ -23,6 +23,11 @@ export const routes: RouteObject[] = [
           crumb: 'Todos',
         },
       },
+      {
+        path: 'chat',
+        lazy: () => import('./features/ai/pages/chat/chat'),
+        loader: requireAuthLoader,
+      },
     ],
   },
   {
